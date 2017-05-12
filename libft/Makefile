@@ -6,7 +6,7 @@
 #    By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 21:47:29 by aakin-al          #+#    #+#              #
-#    Updated: 2017/04/06 01:35:39 by aakin-al         ###   ########.fr        #
+#    Updated: 2017/05/12 13:40:53 by aakin-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SOURCE = ft_memset.c\
 		 ft_memcmp.c\
 		 ft_strlen.c\
 		 ft_strdup.c\
+		 ft_strndup.c\
 		 ft_strcpy.c\
 		 ft_strcat.c\
 		 ft_strncat.c\

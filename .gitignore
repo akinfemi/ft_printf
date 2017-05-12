@@ -31,3 +31,10 @@
 # Debug files
 *.dSYM/
 *.su
+
+#swap files
+*.swp
+
+#test main files
+test.c
+main.c
