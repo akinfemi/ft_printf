@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 20:59:15 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/12 12:07:23 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/26 09:34:22 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int		get_nwords(char const *str, char delim)
 {
 	int	i;
 
-	while (*str == delim)
+	while (str && *str == delim)
 		str++;
 	i = (*str != '\0');
 	while (*str)
@@ -39,7 +39,7 @@ static char		*next_word(char const **st, char delim)
 	j = 0;
 	word = 0;
 	str = *st;
-	while (*str == delim)
+	while (str && *str == delim)
 		str++;
 	while (str[i] != delim && str[i])
 		i++;

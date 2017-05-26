@@ -6,31 +6,29 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 13:02:34 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/12 14:08:40 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/26 11:01:24 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
-	char	*str;
+	char	*res;
 
-	while (*fmt)
+	temp = "\0";
+	while (fmt && *fmt)
 	{
 		temp = ft_strchr(fmt, '%');
-		if (temp && ft_strlen(temp) > 0)
-		{
-			str = ft_strndup(fmt, temp-fmt);
-			ft_putendl(str);
-		}
-		fmt = temp + 1;
+		if (!temp || (temp && ft_strlen(fmt) - ft_strlen(temp) > 0))
+			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &res);
+		fmt = temp;
+		if (fmt)
+			ft_parse(ap, &fmt, &res);
 	}
-//	ft_putstr(str);
-	str = va_arg(ap, char*);
-	return (ft_strlen(str));
+	ft_putstr(res);
+	return (ft_strlen(res));
 }
 
 int			ft_printf(const char *fmt, ...)
