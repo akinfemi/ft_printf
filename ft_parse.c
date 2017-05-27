@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 10:15:35 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/26 12:48:05 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/27 00:28:19 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void		init_params(t_format **p)
 	t_format	*params;
 
 	params = *p;
-	params->flags = (char *)ft_memalloc(sizeof(char *) * 10);
 	params->min_width = 0;
 	params->precision = 0;
+	params->space = 0;
+	params->zero = 0;
+	params->hash = 0;
+	params->plus = 0;
 	params->period = '\0';
 	params->conv = '\0';
 }

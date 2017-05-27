@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 13:04:43 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/26 12:42:48 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/27 00:23:40 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@
 
 typedef struct	s_format
 {
-	char		*flags;
+	int			zero;
+	int			hash;
+	int			plus;
+	int			minus;
+	int			space;
 	int			min_width;
 	int			period;
 	int			precision;
