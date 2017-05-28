@@ -38,3 +38,8 @@
 #test main files
 test.c
 main.c
+
+#others
+.idea/
+CMake*
+cmake*
