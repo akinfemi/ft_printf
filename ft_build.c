@@ -11,9 +11,12 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-void	ft_build(va_list ap, t_format *p, const char **fmt, t_output **output)
+void	ft_build(va_list ap, t_format *p, t_output **output)
 {
-//
+	char 		*res;
+
+	res = handle_conv(ap, p->conv);
+    ft_add(res, output);
 }
 void		ft_add(char *str, t_output **output)
 {

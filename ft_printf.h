@@ -35,16 +35,16 @@ typedef struct	s_format
 	int			perc;
 	char		lmod;
 }				t_format;
-void	ft_add(char *str, t_output **output);
-void	ft_parse(va_list ap, const char **fmt, t_output **output);
-void	ft_build(va_list ap, t_format *p, const char **fmt, t_output **output);
-void	set_flags(t_format **p, const char **fmt);
-void	set_min_width(t_format **p, const char **fmt);
-void	set_precision(t_format **p, const char **fmt);
-void	set_args(t_format **p, const char **fmt);
-int		ft_is_conv(char *str);
-void	init_output(t_output **output);
-
+void	    ft_add(char *str, t_output **output);
+void	    ft_parse(va_list ap, const char **fmt, t_output **output);
+void    	ft_build(va_list ap, t_format *p, t_output **output);
+void    	set_flags(t_format **p, const char **fmt);
+void	    set_min_width(t_format **p, const char **fmt);
+void	    set_precision(t_format **p, const char **fmt);
+void	    set_args(t_format **p, const char **fmt);
+int		    ft_is_conv(char *str);
+void	    init_output(t_output **output);
+char        *handle_conv(va_list ap, char arg);
 /*
  * Temporary function
  */

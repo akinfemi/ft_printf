@@ -44,7 +44,11 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 	params  = (t_format *)malloc(sizeof(t_format));
 	init_params(&params);
 	*fmt = *fmt + 1;
-	 while (*fmt)
+	if (**fmt == '%'){
+		params->perc = 1;
+		*fmt = *fmt + 1;
+	}
+	 while (*fmt && **fmt != '%')
 	 {
 		tmp = *fmt;
 		set_flags(&params, fmt);
@@ -56,5 +60,5 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 			break;
 		test_set(params);//testing function
 	 }
-	ft_build(ap, params, fmt, output);/*build resulting string based on the combination of the flags*/
+	ft_build(ap, params, output);/*build resulting string based on the combination of the flags*/
 }
