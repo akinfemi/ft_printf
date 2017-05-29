@@ -15,20 +15,21 @@
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
-	char	*res;
+	t_output	*output;
 
-	temp = "\0";
+	output = (t_output *)malloc(sizeof(t_output));
+	init_output(&output);
 	while (fmt && *fmt)
 	{
 		temp = ft_strchr(fmt, '%');
 		if (!temp || (temp && ft_strlen(fmt) - ft_strlen(temp) > 0))
-			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &res);
+			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output);
 		fmt = temp;
 		if (fmt)
-			ft_parse(ap, &fmt, &res);
+			ft_parse(ap, &fmt, &output);
 	}
-	ft_putstr(res);
-	return (ft_strlen(res));
+	ft_putstr(output->res);
+	return (output->len);
 }
 
 int			ft_printf(const char *fmt, ...)

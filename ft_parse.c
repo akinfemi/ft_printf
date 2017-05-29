@@ -12,6 +12,14 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
+void		init_output(t_output **output)
+{
+	t_output	*out;
+
+	out = *output;
+	out->res = ft_strnew(0);
+	out->len = 0;
+}
 void		init_params(t_format **p)
 {
 	t_format	*params;
@@ -28,7 +36,7 @@ void		init_params(t_format **p)
 	params->lmod = '\0';
 }
 
-void		ft_parse(va_list ap, const char **fmt, char **res)
+void		ft_parse(va_list ap, const char **fmt, t_output **output)
 {
 	t_format	*params;
 	const char 	*tmp;
@@ -38,15 +46,15 @@ void		ft_parse(va_list ap, const char **fmt, char **res)
 	*fmt = *fmt + 1;
 	 while (*fmt)
 	 {
-		 tmp = *fmt;
+		tmp = *fmt;
 		set_flags(&params, fmt);
 		set_min_width(&params, fmt);
 		set_precision(&params, fmt);
 		set_args(&params, fmt);
-		 tmp++;
-		 if (*tmp == '\0')
-			 break;
+		tmp++;
+		if (*tmp == '\0')
+			break;
 		test_set(params);//testing function
 	 }
-	ft_build(ap, params, fmt, res);/*build resulting string based on the combination of the flags*/
+	ft_build(ap, params, fmt, output);/*build resulting string based on the combination of the flags*/
 }

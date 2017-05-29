@@ -11,11 +11,15 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-void	ft_build(va_list ap, t_format *p, const char **fmt, char **res)
+void	ft_build(va_list ap, t_format *p, const char **fmt, t_output **output)
 {
 //
 }
-void		ft_add(char *str, char **res)
+void		ft_add(char *str, t_output **output)
 {
-	*res = ft_strjoin(*res, str);
+	t_output	*out;
+
+	out = *output;
+	out->len += ft_strlen(str);
+	out->res = ft_strjoin(out->res, str);
 }
