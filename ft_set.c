@@ -104,7 +104,9 @@ void		set_args(t_format **p, const char **fmt)
 	}
 	*fmt = str;
 }
-
+/*
+ * Temporary Function
+ */
 void		test_set(t_format *params)
 {
 	if (params->conv)

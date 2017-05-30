@@ -19,7 +19,7 @@
 typedef struct	s_output
 {
 	char 		*res;
-	int 		len;
+	size_t 		len;
 }				t_output;
 typedef struct	s_format
 {
@@ -45,6 +45,7 @@ void	    set_args(t_format **p, const char **fmt);
 int		    ft_is_conv(char *str);
 void	    init_output(t_output **output);
 char        *handle_conv(va_list ap, char arg);
+char    	*ft_padstr(char ch, size_t len);
 /*
  * Temporary function
  */

@@ -22,14 +22,14 @@ int			ft_print(const char *fmt, va_list ap)
 	while (fmt && *fmt)
 	{
 		temp = ft_strchr(fmt, '%');
-		if (!temp || (temp && ft_strlen(fmt) - ft_strlen(temp) > 0))
+		if (!temp || (ft_strlen(fmt) - ft_strlen(temp) > 0))
 			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output);
 		fmt = temp;
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
 	}
 	ft_putstr(output->res);
-	return (output->len);
+	return ((int)output->len); // or a strlen of output len
 }
 
 int			ft_printf(const char *fmt, ...)

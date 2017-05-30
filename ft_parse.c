@@ -56,9 +56,9 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 		set_precision(&params, fmt);
 		set_args(&params, fmt);
 		tmp++;
-		if (*tmp == '\0')
+		if (*tmp == '\0' || params->conv != '\0')
 			break;
-		test_set(params);//testing function
+//		test_set(params);//testing function
 	 }
 	ft_build(ap, params, output);/*build resulting string based on the combination of the flags*/
 }

@@ -14,8 +14,14 @@
 void	ft_build(va_list ap, t_format *p, t_output **output)
 {
 	char 		*res;
+    t_output    *out;
 
+    out = *output;
 	res = handle_conv(ap, p->conv);
+    out->len = ft_strlen(res);
+    if (p->precision)
+        ft_add(ft_padstr('0', p->precision - out->len), output);
+    //others
     ft_add(res, output);
 }
 void		ft_add(char *str, t_output **output)
