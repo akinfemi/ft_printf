@@ -32,7 +32,7 @@ void		set_flags(t_format **p, const char **fmt)
 	}
 	if (*str == '-')
 	{
-		params->minus = 1;
+		params->flag_minus = 1;
 		str++;
 	}
 	if (*str == '+')

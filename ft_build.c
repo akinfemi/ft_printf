@@ -11,21 +11,32 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-void	ft_build(va_list ap, t_format *p, t_output **output)
-{
-	char 		*res;
-    t_output    *out;
-    int         len;
-    char        ch;
+
+void	ft_build(va_list ap, t_format *p, t_output **output) {
+    char *res;
+    t_output *out;
+    int len;
+    char ch;
 
     out = *output;
-	res = handle_conv(ap, p->conv, p);
+    res = handle_conv(ap, p->conv, p);
     len = ft_strlen(res);
     ch = ' ';
-    if (p->min_width > p->precision && p->precision > 0)
+    if (p->minus && p->flag_minus)
+        ft_add(ft_ctostr('-'), output);
+    if (p->minus)
+        len++;
+    if (p->min_width > p->precision && p->precision > 0 && p->flag_minus == 0) {
         ft_add(ft_padstr(ch, p->min_width - p->precision), output);
-    if (p->min_width > p->precision && p->precision == 0)
+        if (p->minus)
+            ft_add(ft_ctostr('-'), output);
+    }
+    if (p->min_width > p->precision && p->precision == 0 && p->flag_minus == 0)
+    {
         ft_add(ft_padstr(ch, p->min_width - len), output);
+        if (p->minus)
+            ft_add(ft_ctostr('-'), output);
+    }
     if (p->precision && p->conv != '%')
     {
         if (p->conv == 'd' || p->conv == 'i')
@@ -33,6 +44,8 @@ void	ft_build(va_list ap, t_format *p, t_output **output)
         ft_add(ft_padstr(ch, p->precision - len), output);
     }
     ft_add(res, output);
+    if (p->flag_minus)
+        ft_add(ft_padstr(ch, p->min_width - len), output);
 }
 
 void		ft_add(char *str, t_output **output)

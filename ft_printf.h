@@ -19,7 +19,7 @@
 typedef struct	s_output
 {
 	char 		*res;
-	size_t 		len;
+	int 		len;
 }				t_output;
 typedef struct	s_format
 {
@@ -34,6 +34,7 @@ typedef struct	s_format
 	char		conv;
 	int			perc;
 	char		lmod;
+	int			flag_minus;
 }				t_format;
 void	    ft_add(char *str, t_output **output);
 void	    ft_parse(va_list ap, const char **fmt, t_output **output);

@@ -5,8 +5,17 @@
 
 char        *handle_conv(va_list ap, char arg, t_format *params)
 {
+    char    *str;
     if (arg == 'd' || arg == 'i')
-        return (ft_imaxtoa(ft_di_len(ap, params)));
+    {
+        str = ft_imaxtoa(ft_di_len(ap, params));
+        if (*str == '-')
+        {
+            params->minus = 1;
+            str++;
+        }
+        return (str);
+    }
     else if (arg == 's')
         return (va_arg(ap, char *));
     else if (arg == 'c') //there's gotta be a better way to do this

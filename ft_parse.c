@@ -26,6 +26,7 @@ void		init_params(t_format **p)
 
 	params = *p;
 	params->minus = 0;
+    params->flag_minus = 0;
 	params->plus = 0;
 	params->zero = 0;
 	params->space = 0;
