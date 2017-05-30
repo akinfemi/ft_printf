@@ -18,17 +18,17 @@ int			ft_print(const char *fmt, va_list ap)
 	t_output	*output;
 
 	output = (t_output *)malloc(sizeof(t_output));
-	init_output(&output);
 	while (fmt && *fmt)
 	{
+		init_output(&output);
 		temp = ft_strchr(fmt, '%');
 		if (!temp || (ft_strlen(fmt) - ft_strlen(temp) > 0))
-			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output);
+			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output, 0);
 		fmt = temp;
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
+		ft_putstr(output->res);
 	}
-	ft_putstr(output->res);
 	return ((int)output->len); // or a strlen of output len
 }
 

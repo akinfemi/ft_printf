@@ -36,7 +36,7 @@ typedef struct	s_format
 	char		lmod;
 	int			flag_minus;
 }				t_format;
-void	    ft_add(char *str, t_output **output);
+void	    ft_add(char *str, t_output **output, int b);
 void	    ft_parse(va_list ap, const char **fmt, t_output **output);
 void    	ft_build(va_list ap, t_format *p, t_output **output);
 void    	set_flags(t_format **p, const char **fmt);

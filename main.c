@@ -9,8 +9,8 @@ int main()
 {
     ft_printf("Mine: %5d %c %.5%\n",-10,'s');
     printf("Real: %5d %c %.5%\n",-10,'s');
-
-    ft_printf("Mine: %-5d %c %.5%\n",10,'s');
-    printf("Real: %-5d %c %.5%\n",10,'s');
+    printf("<------------------------>\n");
+    ft_printf("Mine: %-10.5d %c %.5%\n",10000,'s');
+    printf("Real: %-10.5d %c %.5%\n",10000,'s');
     return (0);
 }
