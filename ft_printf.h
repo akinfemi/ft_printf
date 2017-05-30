@@ -46,6 +46,8 @@ int		    ft_is_conv(char *str);
 void	    init_output(t_output **output);
 char        *handle_conv(va_list ap, char arg);
 char    	*ft_padstr(char ch, size_t len);
+int			ft_is_slmod(const char *str);
+int			ft_is_lmod(const char ch, t_format **params);
 /*
  * Temporary function
  */

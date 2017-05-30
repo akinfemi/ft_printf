@@ -94,4 +94,6 @@ void				btree_apply_inorder(t_btree *root, void (*applyf)(int));
 void				btree_apply_postorder(t_btree *root, void (*applyf)(int));
 void				btree_apply_preorder(t_btree *root, void (*applyf)(int));
 void				btree_add_node(t_btree **root, t_btree *node);
+char				*ft_itoa_base(int value, int base);
+
 #endif

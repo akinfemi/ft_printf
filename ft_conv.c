@@ -18,7 +18,31 @@ char        *handle_conv(va_list ap, char arg)
         c[1] = '\0';
         return (c);
     }
-    else if (arg == 'u')
-        return (ft_itoa(va_arg(ap, unsigned int)));
+    else if (arg == 'S'){
+
+    }
+    else if (arg == 'D'){
+
+    }
+    else if (arg == 'p'){
+
+    }
+    else if (arg == 'O'){
+
+    }
+    else if (arg == 'U'){
+
+    }
+    else if (arg == 'X'){
+
+    }
+    else if (arg == 'C'){
+
+    }
+    else if (arg == 'u' || arg == 'o' || arg == 'x'){
+
+    }
+
+    return(0);
 //    else if (arg == 'S')
 }

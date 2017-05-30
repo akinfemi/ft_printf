@@ -24,6 +24,7 @@ void	ft_build(va_list ap, t_format *p, t_output **output)
     //others
     ft_add(res, output);
 }
+
 void		ft_add(char *str, t_output **output)
 {
 	t_output	*out;

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+#include <stdio.h> /* Remove later !!!!!!!!!!!!!!!!*/
 
 void		set_flags(t_format **p, const char **fmt)
 {
@@ -50,11 +50,13 @@ void		set_flags(t_format **p, const char **fmt)
 		params->space = 1;
 		str++;
 	}
-	if (*str == 'h' || *str == 'l' || *str == 'z' || *str == 'j') //needs to be reworked for priority of flags
+	if (ft_is_slmod(str))
 	{
-		params->lmod = *str;
-		str++;
+		params->lmod = ft_toupper(*str);
+		str += 2;
 	}
+	if (ft_is_lmod(*str, &params))
+		str++;
 	*fmt = str;
 }
 
@@ -105,7 +107,7 @@ void		set_args(t_format **p, const char **fmt)
 	*fmt = str;
 }
 /*
- * Temporary Function
+ * Temporary Function. Remove later !!!!!!!!!!!!!!!!!!!!!!!
  */
 void		test_set(t_format *params)
 {

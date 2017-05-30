@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
