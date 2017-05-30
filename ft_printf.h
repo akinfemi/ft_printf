@@ -44,10 +44,12 @@ void	    set_precision(t_format **p, const char **fmt);
 void	    set_args(t_format **p, const char **fmt);
 int		    ft_is_conv(char *str);
 void	    init_output(t_output **output);
-char        *handle_conv(va_list ap, char arg);
+char        *handle_conv(va_list ap, char arg, t_format *params);
 char    	*ft_padstr(char ch, size_t len);
 int			ft_is_slmod(const char *str);
 int			ft_is_lmod(const char ch, t_format **params);
+intmax_t    ft_di_len(va_list ap, t_format *params);
+char        *ft_ctostr(char ch);
 /*
  * Temporary function
  */

@@ -78,7 +78,8 @@ SOURCE = ft_memset.c\
 		 btree_apply_inorder.c\
 		 btree_create_node.c\
 		 btree_add_node.c\
-		 ft_itoa_base.c
+		 ft_itoa_base.c\
+		 ft_imaxtoa.c
 
 O_FILES = $(SOURCE:.c=.o)
 

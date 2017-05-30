@@ -29,6 +29,7 @@ void		init_params(t_format **p)
 	params->plus = 0;
 	params->zero = 0;
 	params->space = 0;
+    params->hash = 0;
 	params->min_width = 0;
 	params->precision = 0;
 	params->period = 0;
@@ -45,7 +46,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 	init_params(&params);
 	*fmt = *fmt + 1;
 	if (**fmt == '%'){
-		params->perc = 1;
+		params->conv = '%';
 		*fmt = *fmt + 1;
 	}
 	 while (*fmt && **fmt != '%')
@@ -58,7 +59,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 		tmp++;
 		if (*tmp == '\0' || params->conv != '\0')
 			break;
-//		test_set(params);//testing function
 	 }
+//    test_set(params);//testing function
 	ft_build(ap, params, output);/*build resulting string based on the combination of the flags*/
 }

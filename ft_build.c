@@ -15,13 +15,23 @@ void	ft_build(va_list ap, t_format *p, t_output **output)
 {
 	char 		*res;
     t_output    *out;
+    int         len;
+    char        ch;
 
     out = *output;
-	res = handle_conv(ap, p->conv);
-    out->len = ft_strlen(res);
-    if (p->precision)
-        ft_add(ft_padstr('0', p->precision - out->len), output);
-    //others
+	res = handle_conv(ap, p->conv, p);
+    len = ft_strlen(res);
+    ch = ' ';
+    if (p->min_width > p->precision && p->precision > 0)
+        ft_add(ft_padstr(ch, p->min_width - p->precision), output);
+    if (p->min_width > p->precision && p->precision == 0)
+        ft_add(ft_padstr(ch, p->min_width - len), output);
+    if (p->precision && p->conv != '%')
+    {
+        if (p->conv == 'd' || p->conv == 'i')
+            ch = '0';
+        ft_add(ft_padstr(ch, p->precision - len), output);
+    }
     ft_add(res, output);
 }
 

@@ -20,11 +20,6 @@ void		set_flags(t_format **p, const char **fmt)
 
 	str = *fmt;
 	params = *p;
-	if (*str == '%')
-	{
-		params->perc = 1;
-		str++;
-	}
 	if (*str == '#')
 	{
 		params->hash = 1;
@@ -85,16 +80,19 @@ void		set_precision(t_format **p, const char **fmt)
 	{
 		params->period = 1;
 		str++;
-		params->precision = ft_atoi(str);
-		while (*str >= '0' && *str <= '9')
-			str++;
+		if (*str >= '0' && *str <= '9')
+		{
+			params->precision = ft_atoi(str);
+			while (*str >= '0' && *str <= '9')
+				str++;
+		}
 	}
 	*fmt = str;
 }
 
 void		set_args(t_format **p, const char **fmt)
 {
-	t_format	*params;
+	t_format		*params;
 	const char		*str;
 
 	str = *fmt;
@@ -114,13 +112,13 @@ void		test_set(t_format *params)
 	if (params->conv)
 		printf("Conversion: %c\n",params->conv);
 	if (params->precision || params->period)
-		printf("Precision: %d, Period: %d\n",params->precision, params->period);
+		printf("Precision:%d, Period: %d\n",params->precision, params->period);
 	if (params->min_width)
 		printf("Min_Width: %d\n", params->min_width);
 	if (params->lmod)
 		printf("lmod: %c\n", params->lmod);
 	if (params->space)
-		printf("space: %d\n", params->space);
+		printf("Space: %d\n", params->space);
 	if (params->zero)
 		printf("Zero: %d\n", params->zero);
 	if (params->hash)

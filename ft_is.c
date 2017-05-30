@@ -2,7 +2,7 @@
 int	ft_is_conv(char *str)
 {
 	char	*conv;
-	conv = "sSpdDioOuUxXcC";
+	conv = "sSpdDioOuUxXcC%";
 
 	while(*conv)
 	{
