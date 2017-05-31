@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_upper_base.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 21:17:57 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/04/17 21:47:04 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/31 10:04:49 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int		get_len(long nbr, int base)
 	return (i);
 }
 
-char	*ft_itoa_base(int value, int base)
+char	*ft_itoa_upper_base(int value, int base)
 {
 	int len;
 	char *str;
@@ -48,7 +48,7 @@ char	*ft_itoa_base(int value, int base)
 	}
 	while (val != 0)
 	{
-		str[--len] = (val % base) + (val % base > 9 ? 'a' - 10 : '0');
+		str[--len] = (val % base) + (val % base > 9 ? 'A' - 10 : '0');
 		val/=base;
 	}
 	if (str[0] == 0)

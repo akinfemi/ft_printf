@@ -9,8 +9,8 @@
 /*   Updated: 2017/05/26 12:48:05 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include "ft_printf.h"
+
+#include <ft_printf.h>
 
 void		init_output(t_output **output)
 {
@@ -20,6 +20,7 @@ void		init_output(t_output **output)
 	out->res = ft_strnew(0);
 	out->len = 0;
 }
+
 void		init_params(t_format **p)
 {
 	t_format	*params;

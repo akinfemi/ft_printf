@@ -37,6 +37,8 @@
 
 #test main files
 test.c
+main.c
+run.sh
 
 #others
 .idea/

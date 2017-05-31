@@ -69,6 +69,7 @@ SOURCE_FILES := libft/btree_add_node.c\
                 libft/ft_tolower.c\
                 libft/ft_toupper.c\
                 libft/ft_itoa_base.c\
+                libft/ft_itoa_upper_base.c\
                 libft/ft_imaxtoa.c\
                 ft_build.c\
                 ft_is.c\

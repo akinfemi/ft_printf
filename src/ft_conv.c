@@ -19,15 +19,17 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
     else if (arg == 's')
         return (va_arg(ap, char *));
     else if (arg == 'c')
-        return (ft_ctostr(va_arg(ap, int)));
+        return (ft_padstr(va_arg(ap, int), 1));
     else if (arg == '%')
-        return (ft_ctostr(arg));
+        return (ft_padstr(arg, 1));
     else if (arg == 'o')
         return (ft_itoa_base(ft_oux_len(ap, params), 8));
     else if (arg == 'u')
         return (ft_itoa_base(ft_oux_len(ap, params), 10));
     else if (arg == 'x')
         return (ft_itoa_base(ft_oux_len(ap, params), 16));
+    else if (arg == 'X')
+        return (ft_itoa_upper_base(ft_oux_len(ap, params), 16));
     return(0);//    else if (arg == 'S')
 }
 

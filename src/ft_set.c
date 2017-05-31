@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h> /* Remove later !!!!!!!!!!!!!!!!*/
+#include <ft_printf.h>
+//#include <stdio.h> /* Remove later !!!!!!!!!!!!!!!!*/
 
 void		set_flags(t_format **p, const char **fmt)
 {

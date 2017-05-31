@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+//#include <stdio.h>
 void	ft_build(va_list ap, t_format *p, t_output **output) {
     char *res;
     t_output *out;
-    size_t len;
+    int len;
     char ch;
 
     out = *output;
@@ -23,19 +23,19 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     len = ft_strlen(res);
     ch = ' ';
     if (p->minus && p->flag_minus)
-        ft_add(ft_ctostr('-'), output, 1);
+        ft_add(ft_padstr('-', 1), output, 1);
     if (p->minus)
         len++;
     if (p->min_width > p->precision && p->precision > 0 && p->flag_minus == 0) {
         ft_add(ft_padstr(ch, p->min_width - p->precision - p->plus), output, 1);
         if (p->minus)
-            ft_add(ft_ctostr('-'), output, 1);
+            ft_add(ft_padstr('-', 1), output, 1);
     }
     if (p->min_width > p->precision && p->precision == 0 && p->flag_minus == 0 && p->min_width > len)
     {
         ft_add(ft_padstr(ch, p->min_width - len), output, 1);
         if (p->minus)
-            ft_add(ft_ctostr('-'), output, 1);
+            ft_add(ft_padstr('-', 1), output, 1);
     }
     if (p->precision && p->conv != '%' && p->precision > len)
     {
@@ -44,20 +44,21 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
         ft_add(ft_padstr(ch, p->precision - len), output, 1);
     }
     if (p->plus)
-        ft_add(ft_ctostr('+'), output, 0);
-    if (p->minus == 0 && p->space)
-        ft_add(ft_ctostr(' '), output, 1);
+        ft_add(ft_padstr('+', 1), output, 0);
+    if (p->minus == 0 && p->space && (p->conv == 'd' || p->conv == 'i'))
+        ft_add(ft_padstr(' ', 1), output, 1);
+    if (p->conv == 's' && p->precision != 0 && p->precision < len)
+        res = ft_strndup(res, p->precision); // memory leak
     ft_add(res, output, 1);
     if (p->flag_minus && p->min_width > len)
         ft_add(ft_padstr(' ', p->min_width - out->len), output, 1);
 }
 
-void		ft_add(char *str, t_output **output, int booln)
-{
-	t_output	*out;
+void		ft_add(char *str, t_output **output, int booln) {
+    t_output *out;
 
-	out = *output;
+    out = *output;
     if (booln)
         out->len += ft_strlen(str);
-	out->res = ft_strjoin(out->res, str);
+    out->res = ft_strjoin(out->res, str);
 }

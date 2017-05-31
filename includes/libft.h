@@ -95,5 +95,6 @@ void				btree_apply_postorder(t_btree *root, void (*applyf)(int));
 void				btree_apply_preorder(t_btree *root, void (*applyf)(int));
 void				btree_add_node(t_btree **root, t_btree *node);
 char				*ft_itoa_base(int value, int base);
+char				*ft_itoa_upper_base(int value, int base);
 char				*ft_imaxtoa(intmax_t nb);
 #endif

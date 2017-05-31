@@ -10,13 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <ft_printf.h>
 
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
 	t_output	*output;
+    int         out_len;
 
+    out_len = 0;
 	output = (t_output *)malloc(sizeof(t_output));
 	while (fmt && *fmt)
 	{
@@ -28,8 +30,9 @@ int			ft_print(const char *fmt, va_list ap)
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
 		ft_putstr(output->res);
+        out_len += ft_strlen(output->res);
 	}
-	return ((int)output->len); // or a strlen of output len
+	return (out_len);
 }
 
 int			ft_printf(const char *fmt, ...)
