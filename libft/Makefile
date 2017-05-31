@@ -83,6 +83,8 @@ SOURCE = ft_memset.c\
 
 O_FILES = $(SOURCE:.c=.o)
 
+.PHONY = all fclean clean re
+
 all: $(NAME)
 
 $(NAME): $(O_FILES)

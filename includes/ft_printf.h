@@ -28,9 +28,9 @@ typedef struct	s_format
 	int 		zero;
 	int 		hash;
 	int 		space;
-	int			min_width;
+	size_t		min_width;
 	int			period;
-	int			precision;
+	size_t		precision;
 	char		conv;
 	int			perc;
 	char		lmod;

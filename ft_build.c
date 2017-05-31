@@ -15,7 +15,7 @@
 void	ft_build(va_list ap, t_format *p, t_output **output) {
     char *res;
     t_output *out;
-    int len;
+    size_t len;
     char ch;
 
     out = *output;
