@@ -1,10 +1,9 @@
 NAME    :=  libftprintf.a
 
-CC      :=  gcc
 CFLAGS  :=  -Wall -Wextra -Werror
 CFLAGS  +=  -I includes/
 
-SOURCE_FILES =  libft/btree_add_node.c\
+SOURCE_FILES := libft/btree_add_node.c\
                 libft/btree_apply_inorder.c\
                 libft/btree_apply_postorder.c\
                 libft/btree_apply_preorder.c\
@@ -74,27 +73,32 @@ SOURCE_FILES =  libft/btree_add_node.c\
                 ft_build.c\
                 ft_is.c\
                 ft_parse.c\
-                ft_printf.c\
                 ft_set.c\
                 ft_conv.c\
-                ft_str.c
-
-O_FILES = $(SOURCE_FILES:.c=.o)
+                ft_str.c\
+                ft_printf.c
 
 .PHONY = all fclean clean re
+
+SRC_FILES = $(addprefix src/, $(SOURCE_FILES))
+
+O_FILES = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
 $(O_FILES):%.o: %.c
-	@gcc $(SOURCE_FILES) -c $(CFLAGS)$< -o $@
+	@gcc -c $(CFLAGS) $< -o $@
 
 $(NAME): $(O_FILES)
 	@ar rc $(NAME) $(O_FILES)
+	@echo "Libftprintf Library created"
 
 clean:
 	@rm -rf $(O_FILES)
+	@echo "Removed object files"
 
 fclean: clean
 	@rm -rf $(NAME)
+	@echo "Removed object files and library"
 
 re: fclean all

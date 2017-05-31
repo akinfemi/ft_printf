@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <ft_printf.h>
 #include <stdio.h>
 void	ft_build(va_list ap, t_format *p, t_output **output) {
     char *res;
@@ -55,7 +55,6 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
 void		ft_add(char *str, t_output **output, int booln)
 {
 	t_output	*out;
-    int         len;
 
 	out = *output;
     if (booln)

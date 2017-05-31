@@ -42,3 +42,5 @@ test.c
 .idea/
 CMake*
 cmake*
+._.DS_Store
+.DS_Store

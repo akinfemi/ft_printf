@@ -1,9 +1,9 @@
 //
 // Created by Akinfemi Akin-Aluko on 5/30/17.
 //
-#include "ft_printf.h"
+//#include <ft_printf.h>
 #include <stdio.h>
-int			ft_printf(const char *fmt,...);
+//int			ft_printf(const char *fmt,...);
 
 int main()
 {

@@ -1,7 +1,7 @@
 //
 // Created by akinfemi on 5/29/17.
 //
-#include "ft_printf.h"
+#include <ft_printf.h>
 
 char        *handle_conv(va_list ap, char arg, t_format *params)
 {
@@ -49,7 +49,7 @@ intmax_t    ft_di_len(va_list ap, t_format *params)
         return (va_arg(ap, int));
 }
 
-uintmax_t   fx_oux_len(va_list ap, t_format *params)
+uintmax_t   ft_oux_len(va_list ap, t_format *params)
 {
     if (params->lmod == 'L')  //long long
         return (va_arg(ap, unsigned long long));

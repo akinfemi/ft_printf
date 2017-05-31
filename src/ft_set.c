@@ -107,26 +107,26 @@ void		set_args(t_format **p, const char **fmt)
 /*
  * Temporary Function. Remove later !!!!!!!!!!!!!!!!!!!!!!!
  */
-void		test_set(t_format *params)
-{
-	if (params->conv)
-		printf("Conversion: %c\n",params->conv);
-	if (params->precision || params->period)
-		printf("Precision:%d, Period: %d\n",params->precision, params->period);
-	if (params->min_width)
-		printf("Min_Width: %d\n", params->min_width);
-	if (params->lmod)
-		printf("lmod: %c\n", params->lmod);
-	if (params->space)
-		printf("Space: %d\n", params->space);
-	if (params->zero)
-		printf("Zero: %d\n", params->zero);
-	if (params->hash)
-		printf("Hash: %d\n", params->hash);
-	if (params->plus)
-		printf("Plus: %d\n", params->plus);
-	if (params->minus)
-		printf("Minus: %d\n", params->minus);
-	if (params->perc)
-		printf("Percentage: %c\n", params->perc);
-}
+//void		test_set(t_format *params)
+//{
+//	if (params->conv)
+//		printf("Conversion: %c\n",params->conv);
+//	if (params->precision || params->period)
+//		printf("Precision:%d, Period: %d\n",params->precision, params->period);
+//	if (params->min_width)
+//		printf("Min_Width: %d\n", params->min_width);
+//	if (params->lmod)
+//		printf("lmod: %c\n", params->lmod);
+//	if (params->space)
+//		printf("Space: %d\n", params->space);
+//	if (params->zero)
+//		printf("Zero: %d\n", params->zero);
+//	if (params->hash)
+//		printf("Hash: %d\n", params->hash);
+//	if (params->plus)
+//		printf("Plus: %d\n", params->plus);
+//	if (params->minus)
+//		printf("Minus: %d\n", params->minus);
+//	if (params->perc)
+//		printf("Percentage: %c\n", params->perc);
+//}
