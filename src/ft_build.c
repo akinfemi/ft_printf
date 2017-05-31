@@ -39,7 +39,7 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     }
     if (p->precision && p->conv != '%' && p->precision > len)
     {
-        if (p->conv == 'd' || p->conv == 'i')
+        if (p->conv == 'd' || p->conv == 'i' || p->conv == 'x' || p->conv == 'o' || p->conv == 'u')
             ch = '0';
         ft_add(ft_padstr(ch, p->precision - len), output, 1);
     }
