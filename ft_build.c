@@ -27,7 +27,7 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     if (p->minus)
         len++;
     if (p->min_width > p->precision && p->precision > 0 && p->flag_minus == 0) {
-        ft_add(ft_padstr(ch, p->min_width - p->precision), output, 1);
+        ft_add(ft_padstr(ch, p->min_width - p->precision - p->plus), output, 1);
         if (p->minus)
             ft_add(ft_ctostr('-'), output, 1);
     }
@@ -43,8 +43,12 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
             ch = '0';
         ft_add(ft_padstr(ch, p->precision - len), output, 1);
     }
+    if (p->plus)
+        ft_add(ft_ctostr('+'), output, 0);
+    if (p->minus == 0 && p->space)
+        ft_add(ft_ctostr(' '), output, 1);
     ft_add(res, output, 1);
-    if (p->flag_minus)
+    if (p->flag_minus && p->min_width > len)
         ft_add(ft_padstr(' ', p->min_width - out->len), output, 1);
 }
 

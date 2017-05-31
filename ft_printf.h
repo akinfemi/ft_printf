@@ -51,6 +51,7 @@ int			ft_is_slmod(const char *str);
 int			ft_is_lmod(const char ch, t_format **params);
 intmax_t    ft_di_len(va_list ap, t_format *params);
 char        *ft_ctostr(char ch);
+uintmax_t   fx_oux_len(va_list ap, t_format *params);
 /*
  * Temporary function
  */
