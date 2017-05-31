@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-
+#include <stdio.h>
 void		init_output(t_output **output)
 {
 	t_output	*out;
@@ -46,12 +46,11 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 
 	params  = (t_format *)malloc(sizeof(t_format));
 	init_params(&params);
-	*fmt = *fmt + 1;
-	if (**fmt == '%'){
+
+    *fmt = *fmt + 1;//
+	if (**fmt == '%')
 		params->conv = '%';
-		*fmt = *fmt + 1;
-	}
-	 while (*fmt && **fmt != '%')
+	 while (*fmt && **fmt && **fmt != '%')
 	 {
 		tmp = *fmt;
 		set_flags(&params, fmt);
@@ -63,5 +62,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 			break;
 	 }
 //    test_set(params);//testing function
+    if (!*fmt)
+        return ;
 	ft_build(ap, params, output);/*build resulting string based on the combination of the flags*/
 }

@@ -25,7 +25,7 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
     else if (arg == 'o')
         return (ft_itoa_base(ft_oux_len(ap, params), 8));
     else if (arg == 'u')
-        return (ft_itoa_base(ft_oux_len(ap, params), 10));
+        return (ft_imaxtoa(ft_oux_len(ap, params)));
     else if (arg == 'x')
         return (ft_itoa_base(ft_oux_len(ap, params), 16));
     else if (arg == 'X')

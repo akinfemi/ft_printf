@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-static int		get_len(long nbr, int base)
+static int		get_len(uintmax_t nbr, int base)
 {
 	int i = 0;
 	if (nbr == 0)
@@ -24,20 +24,12 @@ static int		get_len(long nbr, int base)
 	return (i);
 }
 
-char	*ft_itoa_base(int value, int base)
+char	*ft_itoa_base(uintmax_t val, int base)
 {
-	int len;
+	int8_t len;
 	char *str;
-	long val = (long) value;
 	int sign = 1;
 
-	if (val < 0 && base == 10)
-	{
-		val *= -1;
-		sign = -1;
-	}
-	if ((val < 0 && base != 10) || base < 2 || base > 16)
-		return (0);
 	len = get_len(val, base) + (sign < 0);
 	str = (char *)malloc(sizeof(char) * len + 1);
 	str[len] = '\0';
@@ -51,7 +43,5 @@ char	*ft_itoa_base(int value, int base)
 		str[--len] = (val % base) + (val % base > 9 ? 'a' - 10 : '0');
 		val/=base;
 	}
-	if (str[0] == 0)
-		str[0] = '-';
 	return (str);
 }
