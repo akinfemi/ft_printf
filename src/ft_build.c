@@ -24,7 +24,7 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     ch = ' ';
 //    handle_plus(&p, output);
     handle_space(&p, output);
-    handle_padding(&p, output, len);
+    handle_padding(&p, output, res, len);
 //    handle_minus(&p, output);
 //    handle_hash(&p, output);
     handle_precision(&p, output, len);

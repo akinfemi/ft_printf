@@ -59,7 +59,7 @@ int		            ft_is_diox(char c);
 void    handle_hash(t_format **p, t_output **output);
 void    handle_plus(t_format **params, t_output **output);
 void    handle_space(t_format **params, t_output **output);
-void    handle_padding(t_format **params, t_output **output, int len);
+void    handle_padding(t_format **params, t_output **output, char *res, int len);
 void    handle_minus(t_format **params, t_output **output);
 void    handle_precision(t_format **params, t_output **output, int len);
 void    handle_res(t_format **params, t_output **output, char *res, int len);
