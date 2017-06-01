@@ -61,8 +61,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 		if (*tmp == '\0' || params->conv != '\0')
 			break;
 	 }
-//    test_set(params);//testing function
     if (!*fmt)
         return ;
-	ft_build(ap, params, output);/*build resulting string based on the combination of the flags*/
+	ft_build(ap, params, output);
 }

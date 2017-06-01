@@ -12,38 +12,23 @@
 
 #include "libft.h"
 
-static int		get_length(intmax_t nb)
+char	*ft_imaxtoa(intmax_t value)
 {
-	if (nb < 0)
-		return (1 + get_length(nb * (-1)));
-	else if (nb < 10)
-		return (1);
-	else
-		return (1 + get_length(nb / 10));
-}
+    uintmax_t	i;
+    intmax_t	size;
+    char		*ret;
 
-char			*ft_imaxtoa(intmax_t nb)
-{
-	char	*res;
-	int		len;
-	int		i;
-
-	len = get_length(nb);
-	res = (char *)malloc(sizeof(char) * len + 1);
-	if (!res)
-		return (0);
-	i = len;
-	res[len] = '\0';
-	len--;
-	if (nb < 0)
-		nb *= -1;
-	while (len >= 0)
-	{
-		res[len] = nb % 10 + '0';
-		len--;
-		nb /= 10;
-	}
-	if (res[0] == '0' && i > 1)
-		res[0] = '-';
-	return (res);
+    i = (value < 0) ? -value : value;
+    size = 1 + (value < 0);
+    while ((i /= 10))
+        size++;
+    ret = (char *)malloc(sizeof(char) * (size + 1));
+    ret[size] = '\0';
+    i = (value < 0) ? -value : value;
+    ret[--size] = "0123456789"[i % 10];
+    while ((i /= 10))
+        ret[--size] = "0123456789"[i % 10];
+    if (value < 0)
+        ret[--size] = '-';
+    return (ret);
 }
