@@ -25,12 +25,14 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
     else if (arg == 'o')
         return (ft_itoa_base(ft_oux_len(ap, params), 8));
     else if (arg == 'u')
-        return (ft_imaxtoa(ft_oux_len(ap, params)));
+        return (ft_itoa_base(ft_oux_len(ap, params), 10));
+    else if (arg == 'U')
+        return (ft_itoa_upper_base(ft_oux_len(ap, params), 10));
     else if (arg == 'x')
         return (ft_itoa_base(ft_oux_len(ap, params), 16));
     else if (arg == 'X')
         return (ft_itoa_upper_base(ft_oux_len(ap, params), 16));
-    return(0);//    else if (arg == 'S')
+    return(0);
 }
 
 intmax_t    ft_di_len(va_list ap, t_format *params)

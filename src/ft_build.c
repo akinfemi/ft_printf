@@ -22,10 +22,10 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     res = handle_conv(ap, p->conv, p);
     len = ft_strlen(res);
     ch = ' ';
-    handle_plus(&p, output);
+//    handle_plus(&p, output);
     handle_space(&p, output);
     handle_padding(&p, output, len);
-    handle_minus(&p, output);
+//    handle_minus(&p, output);
 //    handle_hash(&p, output);
     handle_precision(&p, output, len);
     handle_res(&p, output, res, len);

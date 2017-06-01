@@ -23,7 +23,7 @@ void    handle_plus(t_format **params, t_output **output)
     t_format    *p;
 
     p = *params;
-    if (p->plus && p->minus == 0)
+    if (p->plus && p->minus == 0 && ft_is_diox(p->conv))
         ft_add(ft_padstr('+', 1), output, 1);
 }
 
@@ -34,7 +34,7 @@ void    handle_space(t_format **params, t_output **output)
 
     p = *params;
     out = *output;
-    if (p->space && ft_is_dioux(p->conv) && p->plus == 0)
+    if (p->space && ft_is_diox(p->conv) && p->plus == 0 && p->minus == 0)
         ft_add(ft_padstr(' ', 1), output, 1);
 }
 
@@ -42,18 +42,27 @@ void    handle_padding(t_format **params, t_output **output, int len)
 {
     t_format    *p;
     char        ch;
+    int         sign;
 
     p = *params;
+    sign = (p->plus || p->minus) ? 1 : 0;
     len = (p->precision > 0) ? p->precision : len;
     len += (p->hash && (p->conv == 'x' || p->conv == 'X')) ? 2 : 0;
     ch = (p->zero && ft_is_dioux(p->conv) && p->precision == 0) ? '0' : ' ';
     if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero)
         handle_hash(&p, output);
-    if (p->min_width > p->precision && p->flag_minus == 0) {
-        ft_add(ft_padstr(ch, p->min_width - p->plus - p->minus - len), output, 1);
-    }
+    if (p->minus && ch == '0')
+        handle_minus(params, output);
+    if (ch == '0' && p->plus)
+        handle_plus(params, output);
+    if (p->min_width > p->precision && p->flag_minus == 0)
+        ft_add(ft_padstr(ch, p->min_width - sign - len - p->space), output, 1);
     if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero == 0)
         handle_hash(&p, output);
+    if (p->minus && ch == ' ')
+        handle_minus(params, output);
+    if (ch == ' ' && p->plus)
+        handle_plus(params, output);
 }
 
 void    handle_minus(t_format **params, t_output **output)
@@ -71,7 +80,7 @@ void    handle_precision(t_format **params, t_output **output, int len)
     char        ch;
 
     p = *params;
-    if (p->precision && p->conv != '%' && p->precision > len)
+    if (p->precision && ft_is_dioux(p->conv) && p->precision > len)
     {
         ch = (ft_is_dioux(p->conv)) ? '0' : ' ';
         ft_add(ft_padstr(ch, p->precision - len), output, 1);

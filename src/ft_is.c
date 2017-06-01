@@ -75,3 +75,17 @@ int		ft_is_dioux(char c)
 	}
 	return (0);
 }
+
+int		ft_is_diox(char c)
+{
+    char	*conv;
+    conv = "diox";
+
+    while(*conv)
+    {
+        if (c == *conv)
+            return (1);
+        conv++;
+    }
+    return (0);
+}
