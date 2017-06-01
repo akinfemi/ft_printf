@@ -65,7 +65,7 @@ int	ft_is_lmod(const char ch, t_format **p)
 int		ft_is_dioux(char c)
 {
 	char	*conv;
-	conv = "dioOuUxX";
+	conv = "dioux";
 
 	while(*conv)
 	{

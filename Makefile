@@ -77,6 +77,7 @@ SOURCE_FILES := libft/btree_add_node.c\
                 ft_set.c\
                 ft_conv.c\
                 ft_str.c\
+                ft_handle.c\
                 ft_printf.c
 
 .PHONY = all fclean clean re

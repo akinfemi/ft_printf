@@ -9,6 +9,8 @@ char    *ft_padstr(char ch, int len)
     char    *res;
     int     i;
 
+    if (len < 0)
+        len = 0;
     res = (char *)ft_memalloc(sizeof(char)*(len + 1));
     i = -1;
     while(++i < len)
