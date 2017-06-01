@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+//#include <stdio.h>
 void	ft_build(va_list ap, t_format *p, t_output **output) {
     char *res;
     t_output *out;
@@ -31,9 +31,11 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
         if (p->minus)
             ft_add(ft_padstr('-', 1), output, 1);
     }
-    if (p->min_width > p->precision && p->precision == 0 && p->flag_minus == 0 && p->min_width > len)
+    if (p->min_width >= p->precision && p->precision == 0 && p->flag_minus == 0)
     {
-        ft_add(ft_padstr(ch, p->min_width - len), output, 1);
+        ch = (p->zero && ft_is_dioux(p->conv)) ? '0' : ' ';
+        if (p->min_width > len)
+            ft_add(ft_padstr(ch, p->min_width - len), output, 1);
         if (p->minus)
             ft_add(ft_padstr('-', 1), output, 1);
     }
@@ -43,9 +45,9 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
             ch = '0';
         ft_add(ft_padstr(ch, p->precision - len), output, 1);
     }
-    if (p->plus)
+    if (p->plus && p->minus == 0)
         ft_add(ft_padstr('+', 1), output, 0);
-    if (p->minus == 0 && p->space && (p->conv == 'd' || p->conv == 'i'))
+    if (p->minus == 0 && p->space && (p->conv == 'd' || p->conv == 'i') && p->plus == 0)
         ft_add(ft_padstr(' ', 1), output, 1);
     if (p->conv == 's' && p->precision != 0 && p->precision < len)
         res = ft_strndup(res, p->precision); // memory leak
