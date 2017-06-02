@@ -25,32 +25,32 @@ void		set_flags(t_format **p, const char **fmt)
 		params->hash = 1;
 		str++;
 	}
-	else if (*str == '0')
+	if (*str == '0')
 	{
 		params->zero = 1;
 		str++;
 	}
-	else if (*str == '-')
+	if (*str == '-')
 	{
 		params->flag_minus = 1;
 		str++;
 	}
-	else if (*str == '+')
+	if (*str == '+')
 	{
 		params->plus = 1;
 		str++;
 	}
-	else if (*str == ' ')
+	if (*str == ' ')
 	{
 		params->space = 1;
 		str++;
 	}
-	else if (ft_is_slmod(str))
+	if (ft_is_slmod(str))
 	{
 		params->lmod = ft_toupper(*str);
 		str += 2;
 	}
-	else if (ft_is_lmod(*str, &params))
+	if (ft_is_lmod(*str, &params))
 		str++;
 	*fmt = str;
 }

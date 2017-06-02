@@ -55,6 +55,9 @@ void    handle_padding(t_format **params, t_output **output, char *res, int len)
     len = (ft_is_dioux(p->conv) && p->precision < n) ? n : len;
     len += (p->hash && (p->conv == 'x' || p->conv == 'X')) ? 2 : 0;
     ch = (p->zero && ft_is_dioux(p->conv) && p->precision == 0) ? '0' : ' ';
+//    printf("P-Z: %d\n", p->zero);
+//    printf("x: %c %d\n", p->conv, ft_is_dioux(p->conv));
+//    printf("Precs: %d", p->precision);
     if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero && *res != '0')
         handle_hash(&p, output);
     if (p->minus && ch == '0')

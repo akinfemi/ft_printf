@@ -27,7 +27,7 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
     else if (arg == 'u')
         return (ft_itoa_base(ft_oux_len(ap, params), 10));
     else if (arg == 'U')
-        return (ft_itoa_upper_base(ft_oux_len(ap, params), 10));
+        return (ft_itoa_upper_base(ft_U_len(ap), 10));
     else if (arg == 'x')
         return (ft_itoa_base(ft_oux_len(ap, params), 16));
     else if (arg == 'X')
@@ -69,4 +69,9 @@ uintmax_t   ft_oux_len(va_list ap, t_format *params)
         return ((unsigned char)va_arg(ap, int));
     else
         return (va_arg(ap, unsigned int));
+}
+
+uintmax_t   ft_U_len(va_list ap)
+{
+    return (va_arg(ap, unsigned long));
 }
