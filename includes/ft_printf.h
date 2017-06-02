@@ -14,9 +14,9 @@
 # define FT_PRINTF_H
 
 #include <stdarg.h>
-#include <stdlib.h>
 #include <libft.h>
-#include <limits.h>
+#include <stdint.h>
+
 typedef struct	s_output
 {
 	char 		*res;
