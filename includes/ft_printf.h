@@ -55,6 +55,7 @@ char        *ft_ctostr(char ch);
 uintmax_t   ft_oux_len(va_list ap, t_format *params);
 int		    ft_is_dioux(char c);
 int		    ft_is_diox(char c);
+int		    ft_is_di(char c);
 uintmax_t   ft_U_len(va_list ap);
 void        handle_hash(t_format **p, t_output **output);
 void        handle_plus(t_format **params, t_output **output);
@@ -64,7 +65,6 @@ void        handle_minus(t_format **params, t_output **output);
 void        handle_precision(t_format **params, t_output **output, int len);
 void        handle_res(t_format **params, t_output **output, char *res, int len);
 void        handle_alignment(t_format **params, t_output **output, int len);
-
 /*
  * Temporary function
  */

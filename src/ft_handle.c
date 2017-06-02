@@ -25,7 +25,7 @@ void    handle_plus(t_format **params, t_output **output)
     t_format    *p;
 
     p = *params;
-    if (p->plus && p->minus == 0 && ft_is_diox(p->conv))
+    if (p->plus && p->minus == 0 && ft_is_di(p->conv))
         ft_add(ft_padstr('+', 1), output, 1);
 }
 
@@ -55,9 +55,6 @@ void    handle_padding(t_format **params, t_output **output, char *res, int len)
     len = (ft_is_dioux(p->conv) && p->precision < n) ? n : len;
     len += (p->hash && (p->conv == 'x' || p->conv == 'X')) ? 2 : 0;
     ch = (p->zero && ft_is_dioux(p->conv) && p->precision == 0) ? '0' : ' ';
-//    printf("P-Z: %d\n", p->zero);
-//    printf("x: %c %d\n", p->conv, ft_is_dioux(p->conv));
-//    printf("Precs: %d", p->precision);
     if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero && *res != '0')
         handle_hash(&p, output);
     if (p->minus && ch == '0')
@@ -65,7 +62,7 @@ void    handle_padding(t_format **params, t_output **output, char *res, int len)
     if (ch == '0' && p->plus)
         handle_plus(params, output);
     if (p->min_width > p->precision && p->flag_minus == 0)
-        ft_add(ft_padstr(ch, p->min_width - sign - len - p->space), output, 1);
+        ft_add(ft_padstr(ch, p->min_width - sign - len - p->space - (p->hash && p->conv == 'o')), output, 1);
     if (p->hash && (p->conv == 'x' || p->conv == 'X' || p->conv == 'o') && p->zero == 0 && *res != '0')
         handle_hash(&p, output);
     if (p->minus && ch == ' ')

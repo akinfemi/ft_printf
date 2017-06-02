@@ -21,59 +21,24 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     out = *output;
     res = handle_conv(ap, p->conv, p);
     len = ft_strlen(res);
-//    printf("Len ft_build: %d\n", len);
-//    printf("Res ft_build: %s\n", res);
     ch = ' ';
-//    handle_plus(&p, output);
     handle_space(&p, output);
     handle_padding(&p, output, res, len);
-//    handle_minus(&p, output);
-//    handle_hash(&p, output);
     handle_precision(&p, output, len);
     handle_res(&p, output, res, len);
     handle_alignment(&p, output, len);
 }
-//    if (p->minus && p->flag_minus)
-//        ft_add(ft_padstr('-', 1), output, 1);
-//    if (p->minus)
-//        len++;
-//    if (p->min_width > p->precision && p->precision > 0 && p->flag_minus == 0) {
-//        ft_add(ft_padstr(ch, p->min_width - p->precision - p->plus - p->minus), output, 1);
-//        if (p->minus)
-//            ft_add(ft_padstr('-', 1), output, 1);
-//    }
-//    //handle padding
-//    if (p->min_width >= p->precision && p->precision == 0 && p->flag_minus == 0)
-//    {
-//        ch = (p->zero && ft_is_dioux(p->conv)) ? '0' : ' ';
-//        if (p->min_width > len)
-//            ft_add(ft_padstr(ch, p->min_width - len), output, 1);
-//        if (p->minus)
-//            ft_add(ft_padstr('-', 1), output, 1);
-//    }
-//    if (p->plus && p->minus == 0)
-//        ft_add(ft_padstr('+', 1), output, 1);
-//    //handle precision
-//    if (p->precision && p->conv != '%' && p->precision > (len - p->minus))
-//    {
-//        ch = (ft_is_dioux(p->conv)) ? '0' : ' ';
-//        ft_add(ft_padstr(ch, p->precision - (len - p->minus)), output, 1);
-//    }
-//    if (p->minus == 0 && p->space && ft_is_dioux(p->conv) && p->plus == 0 && *out->res != ' ')
-//        ft_add(ft_padstr(' ', 1), output, 1);
-//    if (p->conv == 's' && p->precision != 0 && p->precision < len)
-//        res = ft_strndup(res, p->precision); // memory leak!!!!!!!!!!!!!!!!!!!
-//    ft_add(res, output, 1);
-//    if (p->flag_minus && p->min_width > len)
-//        ft_add(ft_padstr(' ', p->min_width - out->len), output, 1);
-//}
 
-void		ft_add(char *str, t_output **output, int booln) {
+void		ft_add(char *str, t_output **output, int booln)
+{
+//    char    *temp;
     t_output *out;
 
+//    temp = str;
     out = *output;
     if (booln)
         out->len += ft_strlen(str);
-//    printf("Out-Len ft_add: %d\n", out->len);
     out->res = ft_strjoin(out->res, str);
+//    if (ft_strlen(str) > 0)
+//        free(temp);
 }
