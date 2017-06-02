@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+//#include <stdio.h>
 void		init_output(t_output **output)
 {
 	t_output	*out;
@@ -49,7 +49,10 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 
     *fmt = *fmt + 1;//
 	if (**fmt == '%')
-		params->conv = '%';
+    {
+        params->conv = '%';
+        *fmt = *fmt + 1;
+    }
 	 while (*fmt && **fmt && **fmt != '%')
 	 {
 		tmp = *fmt;

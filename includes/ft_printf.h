@@ -55,7 +55,6 @@ char        *ft_ctostr(char ch);
 uintmax_t   ft_oux_len(va_list ap, t_format *params);
 int		    ft_is_dioux(char c);
 int		    ft_is_diox(char c);
-int		    ft_is_dox(char c);
 void        handle_hash(t_format **p, t_output **output);
 void        handle_plus(t_format **params, t_output **output);
 void        handle_space(t_format **params, t_output **output);

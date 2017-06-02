@@ -3,7 +3,7 @@
 //
 
 #include <ft_printf.h>
-#include <stdio.h>
+//#include <stdio.h>
 void    handle_hash(t_format **params, t_output **output)
 {
     t_format    *p;
@@ -100,7 +100,7 @@ void    handle_res(t_format **params, t_output **output, char *res, int len)
     p = *params;
     if (p->conv == 's' && p->precision != 0 && p->precision < len) //truncate string
         res = ft_strndup(res, p->precision); // nts: fix memory leak!
-    if (*res == '0' && ft_is_dioux(p->conv) && p->period == 1)
+    else if (*res == '0' && ft_is_dioux(p->conv) && p->period == 1)
     {
         *res = '\0';
         if (p->hash && p->conv == 'o')

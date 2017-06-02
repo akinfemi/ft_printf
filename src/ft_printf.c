@@ -31,7 +31,9 @@ int			ft_print(const char *fmt, va_list ap)
 			ft_parse(ap, &fmt, &output);
 		ft_putstr(output->res);
         out_len += ft_strlen(output->res);
+//		printf("FMT: %s\n", fmt);
 	}
+//	printf("Out-Len: %d\n", out_len);
 	return (out_len);
 }
 

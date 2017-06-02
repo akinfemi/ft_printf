@@ -21,6 +21,8 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     out = *output;
     res = handle_conv(ap, p->conv, p);
     len = ft_strlen(res);
+//    printf("Len ft_build: %d\n", len);
+//    printf("Res ft_build: %s\n", res);
     ch = ' ';
 //    handle_plus(&p, output);
     handle_space(&p, output);
@@ -72,5 +74,6 @@ void		ft_add(char *str, t_output **output, int booln) {
     out = *output;
     if (booln)
         out->len += ft_strlen(str);
+//    printf("Out-Len ft_add: %d\n", out->len);
     out->res = ft_strjoin(out->res, str);
 }

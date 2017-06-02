@@ -89,17 +89,3 @@ int		ft_is_diox(char c)
     }
     return (0);
 }
-
-int		ft_is_dox(char c)
-{
-    char	*conv;
-    conv = "dox";
-
-    while(*conv)
-    {
-        if (c == *conv)
-            return (1);
-        conv++;
-    }
-    return (0);
-}
