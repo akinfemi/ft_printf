@@ -15,6 +15,8 @@ void    handle_hash(t_format **params, t_output **output)
             ft_add("0x", output, 1);
         else if (p->conv == 'X')
             ft_add("0X", output, 1);
+        else if (p->conv == 'o')
+            ft_add(ft_padstr('0',1), output, 1);
     }
 }
 
@@ -43,11 +45,14 @@ void    handle_padding(t_format **params, t_output **output, char *res, int len)
     t_format    *p;
     char        ch;
     int         sign;
+    int         n;
 
     p = *params;
+    n = ft_strlen(res);
     sign = (p->plus || p->minus) ? 1 : 0;
     len = (p->precision > 0) ? p->precision : len;
-    len = (p->conv == 's' && p->precision > (int)ft_strlen(res)) ? ft_strlen(res) : len;
+    len = (p->conv == 's' && p->precision > n) ? n : len;
+    len = (ft_is_dioux(p->conv) && p->precision < n) ? n : len;
     len += (p->hash && (p->conv == 'x' || p->conv == 'X')) ? 2 : 0;
     ch = (p->zero && ft_is_dioux(p->conv) && p->precision == 0) ? '0' : ' ';
     if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero && *res != '0')
@@ -95,6 +100,14 @@ void    handle_res(t_format **params, t_output **output, char *res, int len)
     p = *params;
     if (p->conv == 's' && p->precision != 0 && p->precision < len) //truncate string
         res = ft_strndup(res, p->precision); // nts: fix memory leak!
+    if (*res == '0' && ft_is_dioux(p->conv) && p->period == 1)
+    {
+        *res = '\0';
+        if (p->hash && p->conv == 'o')
+            *res = '0';
+        if (p->min_width > 0)
+            *res = ' ';
+    }
     ft_add(res, output, 1);
 }
 

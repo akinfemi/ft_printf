@@ -40,7 +40,7 @@ intmax_t    ft_di_len(va_list ap, t_format *params)
     if (params->lmod == 'L')  //long long
         return (va_arg(ap, long long));
     else if (params->lmod == 'h')
-        return ((short) va_arg(ap, unsigned int));
+        return ((short) va_arg(ap, int));
     else if (params->lmod == 'l')
         return (va_arg(ap, long));
     else if (params->lmod == 'z')
@@ -58,7 +58,7 @@ uintmax_t   ft_oux_len(va_list ap, t_format *params)
     if (params->lmod == 'L')  //long long
         return (va_arg(ap, unsigned long long));
     else if (params->lmod == 'h')
-        return ((unsigned short) va_arg(ap, int));
+        return ((unsigned short) va_arg(ap, unsigned int));
     else if (params->lmod == 'l')
         return (va_arg(ap, unsigned long));
     else if (params->lmod == 'z')

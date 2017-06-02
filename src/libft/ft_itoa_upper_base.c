@@ -26,7 +26,7 @@ static int		get_len(uintmax_t nbr, int base)
 
 char	*ft_itoa_upper_base(uintmax_t val, int base)
 {
-	int len;
+	int8_t len;
 	char *str;
 	int sign = 1;
 
