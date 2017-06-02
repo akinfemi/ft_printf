@@ -16,7 +16,7 @@ void    handle_hash(t_format **params, t_output **output)
         else if (p->conv == 'X')
             ft_add("0X", output, 1);
         else if (p->conv == 'o')
-            ft_add(ft_padstr('0',1), output, 1);
+            ft_add(ft_padstr('0', 1), output, 1);
     }
 }
 
@@ -66,7 +66,7 @@ void    handle_padding(t_format **params, t_output **output, char *res, int len)
         handle_plus(params, output);
     if (p->min_width > p->precision && p->flag_minus == 0)
         ft_add(ft_padstr(ch, p->min_width - sign - len - p->space), output, 1);
-    if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero == 0 && *res != '0')
+    if (p->hash && (p->conv == 'x' || p->conv == 'X' || p->conv == 'o') && p->zero == 0 && *res != '0')
         handle_hash(&p, output);
     if (p->minus && ch == ' ')
         handle_minus(params, output);
@@ -110,6 +110,8 @@ void    handle_res(t_format **params, t_output **output, char *res, int len)
             *res = '0';
         if (p->min_width > 0)
             *res = ' ';
+        if (ft_is_dioux(p->conv) && p->precision > 1)
+            *res = '0';
     }
     ft_add(res, output, 1);
 }
