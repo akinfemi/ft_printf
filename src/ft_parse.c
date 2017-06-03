@@ -20,7 +20,13 @@ void		init_output(t_output **output)
 	out->res = ft_strnew(0);
 	out->len = 0;
 }
+void		clean_output(t_output **output)
+{
+	t_output	*out;
 
+	out = *output;
+	out->res = ft_strnew(0);
+}
 void		init_params(t_format **p)
 {
 	t_format	*params;

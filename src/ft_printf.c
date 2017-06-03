@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-
+//#include <stdio.h>
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
@@ -20,19 +20,21 @@ int			ft_print(const char *fmt, va_list ap)
 
     out_len = 0;
 	output = (t_output *)malloc(sizeof(t_output));
+    init_output(&output);
 	while (fmt && *fmt)
 	{
-		init_output(&output);
+		clean_output(&output);
 		temp = ft_strchr(fmt, '%');
 		if (!temp || (ft_strlen(fmt) - ft_strlen(temp) > 0))
-			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output, 0);
+			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output, 1);
 		fmt = temp;
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
 		ft_putstr(output->res);
         out_len += ft_strlen(output->res);
 	}
-	return (out_len);
+//    printf("Final Out-len: %d\n", output->len);
+	return (output->len);
 }
 
 int			ft_printf(const char *fmt, ...)

@@ -1,6 +1,6 @@
 NAME    :=  libftprintf.a
 
-CFLAGS  :=  -Wall -Wextra -Werror
+CFLAGS  :=  -Wall -Wextra -Werror -g
 CFLAGS  +=  -I includes/
 
 SOURCE_FILES := libft/btree_add_node.c\

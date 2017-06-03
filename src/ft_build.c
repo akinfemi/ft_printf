@@ -26,18 +26,20 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
     handle_padding(&p, output, res, len);
     handle_precision(&p, output, len);
     handle_res(&p, output, res, len);
-    handle_alignment(&p, output, len);
+    handle_alignment(&p, output);
 }
 
-void		ft_add(char *str, t_output **output, int booln)
+void		ft_add(char *str, t_output **output, int signal)
 {
 //    char    *temp;
     t_output *out;
 
 //    temp = str;
     out = *output;
-    if (booln)
+    if (signal == 1)
         out->len += ft_strlen(str);
+    else if (signal == 2)
+        out->len += 1;
     out->res = ft_strjoin(out->res, str);
 //    if (ft_strlen(str) > 0)
 //        free(temp);

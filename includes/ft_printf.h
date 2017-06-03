@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 13:04:43 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/26 12:42:48 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/02 11:48:56 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 #include <stdarg.h>
-#include <libft.h>
+#include "libft.h"
 #include <stdint.h>
 
 typedef struct	s_output
@@ -37,6 +37,7 @@ typedef struct	s_format
 	char		lmod;
 	int			flag_minus;
 }				t_format;
+int			ft_printf(const char *fmt, ...);
 void	    ft_add(char *str, t_output **output, int b);
 void	    ft_parse(va_list ap, const char **fmt, t_output **output);
 void    	ft_build(va_list ap, t_format *p, t_output **output);
@@ -46,6 +47,7 @@ void	    set_precision(t_format **p, const char **fmt);
 void	    set_args(t_format **p, const char **fmt);
 int		    ft_is_conv(char *str);
 void	    init_output(t_output **output);
+void	    clean_output(t_output **output);
 char        *handle_conv(va_list ap, char arg, t_format *params);
 char    	*ft_padstr(char ch, int len);
 int			ft_is_slmod(const char *str);
@@ -64,7 +66,7 @@ void        handle_padding(t_format **params, t_output **output, char *res, int 
 void        handle_minus(t_format **params, t_output **output);
 void        handle_precision(t_format **params, t_output **output, int len);
 void        handle_res(t_format **params, t_output **output, char *res, int len);
-void        handle_alignment(t_format **params, t_output **output, int len);
+void        handle_alignment(t_format **params, t_output **output);
 /*
  * Temporary function
  */
