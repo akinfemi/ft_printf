@@ -25,6 +25,8 @@ void		clean_output(t_output **output)
 	t_output	*out;
 
 	out = *output;
+    if (out->res)
+        free(out->res);
 	out->res = ft_strnew(0);
 }
 void		init_params(t_format **p)
@@ -67,11 +69,13 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 		set_precision(&params, fmt);
 		set_args(&params, fmt);
 		tmp++;
-		if (*tmp == '\0' || params->conv != '\0')
+//         printf("PC: %s\n", tmp);
+		if (*tmp == '\0' || --tmp - *fmt == 0 || params->conv != '\0')
 			break;
 	 }
     if (!*fmt)
         return ;
+//    printf("PC: %c\n", params->conv);
     if (ft_is_valid(params->conv) == 0)
         return ;
 	ft_build(ap, params, output);
