@@ -13,6 +13,20 @@ int	ft_is_conv(char *str)
 	return (0);
 }
 
+int		ft_is_valid(char c)
+{
+	char *conv;
+
+	conv = "sdDiouUxXc%";
+	while(*conv)
+	{
+		if (c == *conv)
+			return (1);
+		conv++;
+	}
+	return (0);
+}
+
 int	ft_is_slmod(const char *str)
 {
 	char	*slmod[3];

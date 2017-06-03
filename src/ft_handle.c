@@ -3,7 +3,7 @@
 //
 
 #include <ft_printf.h>
-//#include <stdio.h>
+
 void    handle_hash(t_format **params, t_output **output)
 {
     t_format    *p;
@@ -39,7 +39,20 @@ void    handle_space(t_format **params, t_output **output)
     if (p->space && ft_is_diox(p->conv) && p->plus == 0 && p->minus == 0)
         ft_add(ft_padstr(' ', 1), output, 1);
 }
+int     set_len(t_format **params, char *res, int n)
+{
+    t_format    *p;
+    int         len;
 
+    len = n;
+    p = *params;
+    len = (p->precision > 0) ? p->precision : len;
+    len = (p->conv == 's' && p->precision > n) ? n : len;
+    len = (ft_is_dioux(p->conv) && p->precision < n) ? n : len;
+    len += (p->hash && (p->conv == 'x' || p->conv == 'X')) ? 2 : 0;
+    len = (p->conv == 'c' && ft_strlen(res) == 0) ? 1 : len;
+    return (len);
+}
 void    handle_padding(t_format **params, t_output **output, char *res, int len)
 {
     t_format    *p;
@@ -50,11 +63,7 @@ void    handle_padding(t_format **params, t_output **output, char *res, int len)
     p = *params;
     n = ft_strlen(res);
     sign = (p->plus || p->minus) ? 1 : 0;
-    len = (p->precision > 0) ? p->precision : len;
-    len = (p->conv == 's' && p->precision > n) ? n : len;
-    len = (ft_is_dioux(p->conv) && p->precision < n) ? n : len;
-    len += (p->hash && (p->conv == 'x' || p->conv == 'X')) ? 2 : 0;
-    len = (p->conv == 'c' && ft_strlen(res) == 0) ? 1 : len;
+    len = set_len(params, res, len);
     ch = (p->zero && ft_is_dioux(p->conv) && p->precision == 0) ? '0' : ' ';
     if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero && *res != '0')
         handle_hash(&p, output);
@@ -125,13 +134,6 @@ void    handle_alignment(t_format **params, t_output **output)
 
     p = *params;
     out = *output;
-//    printf("Len: %d\n", len);
-//    printf("Out->len: %d\n", out->len);
-//    printf("p->width: %d\n", p->min_width);
-//    printf("p->precision: %d\n", p->precision);
-    if (p->flag_minus && p->min_width > out->len) {
+    if (p->flag_minus && p->min_width > out->len)
         ft_add(ft_padstr(' ', p->min_width - out->len), output, 1);
-//        printf("Out->len: %d\n", out->len);
-    }
-//    if (p->conv == 'c' && )
 }

@@ -72,5 +72,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 	 }
     if (!*fmt)
         return ;
+    if (ft_is_valid(params->conv) == 0)
+        return ;
 	ft_build(ap, params, output);
 }

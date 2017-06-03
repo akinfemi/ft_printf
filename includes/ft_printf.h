@@ -16,6 +16,7 @@
 #include <stdarg.h>
 #include "libft.h"
 #include <stdint.h>
+#include <limits.h>
 
 typedef struct	s_output
 {
@@ -46,6 +47,7 @@ void	    set_min_width(t_format **p, const char **fmt);
 void	    set_precision(t_format **p, const char **fmt);
 void	    set_args(t_format **p, const char **fmt);
 int		    ft_is_conv(char *str);
+int		    ft_is_valid(char c);
 void	    init_output(t_output **output);
 void	    clean_output(t_output **output);
 char        *handle_conv(va_list ap, char arg, t_format *params);
@@ -67,6 +69,7 @@ void        handle_minus(t_format **params, t_output **output);
 void        handle_precision(t_format **params, t_output **output, int len);
 void        handle_res(t_format **params, t_output **output, char *res, int len);
 void        handle_alignment(t_format **params, t_output **output);
+int         set_len(t_format **params, char *res, int len);
 /*
  * Temporary function
  */
