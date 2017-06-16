@@ -3,7 +3,7 @@
 //
 
 #include <ft_printf.h>
-
+void    add_postfix (t_format **params, t_output **output, char *res, char ch);
 void    handle_hash(t_format **params, t_output **output)
 {
     t_format    *p;
@@ -39,6 +39,7 @@ void    handle_space(t_format **params, t_output **output)
     if (p->space && ft_is_diox(p->conv) && p->plus == 0 && p->minus == 0)
         ft_add(ft_padstr(' ', 1), output, 1);
 }
+
 int     set_len(t_format **params, char *res, int n)
 {
     t_format    *p;
@@ -53,27 +54,63 @@ int     set_len(t_format **params, char *res, int n)
     len = (p->conv == 'c' && ft_strlen(res) == 0) ? 1 : len;
     return (len);
 }
-void    handle_padding(t_format **params, t_output **output, char *res, int len)
+
+void    add_prefix(t_format **params, t_output **output, char *res, char ch)
 {
     t_format    *p;
-    char        ch;
-    int         sign;
-    int         n;
 
     p = *params;
-    n = ft_strlen(res);
-    sign = (p->plus || p->minus) ? 1 : 0;
-    len = set_len(params, res, len);
-    ch = (p->zero && ft_is_dioux(p->conv) && p->precision == 0) ? '0' : ' ';
-    if (p->hash && (p->conv == 'x' || p->conv == 'X') && p->zero && *res != '0')
+    if (p->hash && ft_tolower(p->conv) == 'x' && p->zero && *res != '0')
         handle_hash(&p, output);
     if (p->minus && ch == '0')
         handle_minus(params, output);
     if (ch == '0' && p->plus)
         handle_plus(params, output);
+}
+
+char    set_ch(t_format **params)
+{
+    char    ch;
+    t_format    *p;
+
+    p = *params;
+    ch = (p->zero && (ft_is_dioux(p->conv) || p->conv =='%')
+          && p->precision == 0) ? '0' : ' ';
+    return (ch);
+}
+void    handle_padding(t_format **params, t_output **out, char *res, int len)
+{
+    t_format    *p;
+    char        ch;
+    int         sign;
+    int         n;
+    char        *str;
+
+    p = *params;
+    sign = (p->plus || p->minus) ? 1 : 0;
+    len = set_len(params, res, len);
+    ch = set_ch(params);
+    add_prefix(params, out, res, ch);
     if (p->min_width > p->precision && p->flag_minus == 0)
-        ft_add(ft_padstr(ch, p->min_width - sign - len - p->space - (p->hash && p->conv == 'o')), output, 1);
-    if (p->hash && (p->conv == 'x' || p->conv == 'X' || p->conv == 'o') && p->zero == 0 && *res != '0')
+    {
+        n = p->min_width - sign - len - p->space - (p->hash && p->conv == 'o');
+        str = ft_padstr(ch, n);
+        ft_add(str, out, 1);
+    }
+    add_postfix(params, out, res, ch);
+}
+
+int     ft_isox(char c)
+{
+    return (c == 'x' || c == 'X' || c == 'o');
+}
+
+void    add_postfix (t_format **params, t_output **output, char *res, char ch)
+{
+    t_format    *p;
+
+    p = *params;
+    if (p->hash && ft_isox(p->conv) && p->zero == 0 && *res != '0')
         handle_hash(&p, output);
     if (p->minus && ch == ' ')
         handle_minus(params, output);
@@ -93,14 +130,10 @@ void    handle_minus(t_format **params, t_output **output)
 void    handle_precision(t_format **params, t_output **output, int len)
 {
     t_format    *p;
-    char        ch;
 
     p = *params;
     if (p->precision && ft_is_dioux(p->conv) && p->precision > len)
-    {
-        ch = (ft_is_dioux(p->conv)) ? '0' : ' ';
-        ft_add(ft_padstr(ch, p->precision - len), output, 1);
-    }
+        ft_add(ft_padstr('0', p->precision - len), output, 1);
 }
 
 void    handle_res(t_format **params, t_output **output, char *res, int len)
