@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-//#include <stdio.h>
+#include <stdio.h>
 void		init_output(t_output **output)
 {
 	t_output	*out;

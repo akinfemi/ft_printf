@@ -50,7 +50,7 @@ void		set_flags(t_format **p, const char **fmt)
 		params->lmod = ft_toupper(*str);
 		str += 2;
 	}
-	if (ft_is_lmod(*str, &params))
+    if (ft_is_lmod(*str, &params))
 		str++;
 	*fmt = str;
 }

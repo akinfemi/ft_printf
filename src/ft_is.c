@@ -36,7 +36,7 @@ int	ft_is_slmod(const char *str)
 	slmod[1] = "ll";
 	slmod[2] = "\0";
 	i = 0;
-	while(i < 3)
+	while(i < 2)
 	{
 		if (ft_strncmp(slmod[i], str, 2) == 0)
 			return (1);
@@ -58,7 +58,7 @@ int	ft_is_lmod(const char ch, t_format **p)
 	lmod[3] = 'z';
 	lmod[4] = '\0';
 	i = -1;
-	while(++i < 5)
+	while(++i < 4)
 	{
 		if (ch == lmod[i])
 		{
