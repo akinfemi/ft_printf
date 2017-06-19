@@ -34,6 +34,17 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
         return (ft_itoa_upper_base(ft_oux_len(ap, params), 16));
     else if (arg == 'p')
         return (ft_handle_p(ap, params));
+    else if (arg == 'D')
+    {
+        params->lmod = 'l';
+        str = ft_imaxtoa(ft_di_len(ap, params));
+         if (*str == '-')
+         {
+             params->minus = 1;
+             str++;
+         }
+        return (str);
+    }
     return(0);
 }
 
