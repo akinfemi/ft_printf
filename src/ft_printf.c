@@ -32,6 +32,7 @@ int			ft_print(const char *fmt, va_list ap)
 	const char	*temp;
 	t_output	*output;
     int         out_len;
+    int         n;
 
     out_len = 0;
 	output = (t_output *)malloc(sizeof(t_output));
@@ -46,8 +47,9 @@ int			ft_print(const char *fmt, va_list ap)
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
         out_len += ft_strlen(output->res);
+        n = ft_strlen(output->res);
         ft_repnull(&output);
-		write(1, output->res, ft_strlen(output->res));
+		write(1, output->res, n);
 	}
 	return (out_len);
 }
