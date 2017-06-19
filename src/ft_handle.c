@@ -15,7 +15,7 @@ void    handle_hash(t_format **params, t_output **output)
             ft_add("0x", output, 1);
         else if (p->conv == 'X')
             ft_add("0X", output, 1);
-        else if (p->conv == 'o')
+        else if (ft_tolower(p->conv) == 'o')
             ft_add(ft_padstr('0', 1), output, 1);
     }
 }
@@ -93,7 +93,7 @@ void    handle_padding(t_format **params, t_output **out, char *res, int len)
     add_prefix(params, out, res, ch);
     if (p->min_width > p->precision && p->flag_minus == 0 && p->conv != '%')
     {
-        n = p->min_width - sign - len - p->space - (p->hash && p->conv == 'o');
+        n = p->min_width - sign - len - p->space - (p->hash && ft_tolower(p->conv) == 'o');
         str = ft_padstr(ch, n);
         ft_add(str, out, 1);
     }
@@ -108,7 +108,7 @@ void    handle_padding(t_format **params, t_output **out, char *res, int len)
 
 int     ft_isox(char c)
 {
-    return (c == 'x' || c == 'X' || c == 'o');
+    return (c == 'x' || c == 'X' || c == 'o' || c == 'O');
 }
 
 void    add_postfix (t_format **params, t_output **output, char *res, char ch)

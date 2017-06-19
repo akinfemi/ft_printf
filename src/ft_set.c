@@ -62,10 +62,11 @@ void		set_min_width(t_format **p, const char **fmt)
 
 	str = *fmt;
 	params = *p;
-	if (*str >= '0' && *str <= '9')
-		params->min_width = ft_atoi(str);
-	while (*str >= '0' && *str <= '9')
-		str++;
+	if (*str >= '1' && *str <= '9') {
+        params->min_width = ft_atoi(str);
+        while (*str >= '0' && *str <= '9')
+            str++;
+    }
 	*fmt = str;
 }
 
