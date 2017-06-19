@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+//#include <stdio.h>
 void	ft_build(va_list ap, t_format *p, t_output **output) {
     char *res;
     t_output *out;
@@ -20,6 +20,8 @@ void	ft_build(va_list ap, t_format *p, t_output **output) {
 
     out = *output;
     res = handle_conv(ap, p->conv, p);
+    if (p->conv == 's' && p->precision == 0 && p->period == 1)
+        res = "";
     len = ft_strlen(res);
     ch = ' ';
     handle_space(&p, output);

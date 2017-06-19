@@ -77,6 +77,7 @@ char    set_ch(t_format **params)
     ch = (p->zero && p->period == 0) ? '0' : ' ';
     return (ch);
 }
+
 void    handle_padding(t_format **params, t_output **out, char *res, int len)
 {
     t_format    *p;
@@ -99,6 +100,12 @@ void    handle_padding(t_format **params, t_output **out, char *res, int len)
     else if(p->min_width > 0 && p->flag_minus == 0 && p->conv == '%')
     {
         n = p->min_width - ft_strlen(res);
+        str = ft_padstr(ch, n);
+        ft_add(str, out, 1);
+    }
+    else if (p->precision > p->min_width && p->min_width > len)
+    {
+        n = p->min_width - len;
         str = ft_padstr(ch, n);
         ft_add(str, out, 1);
     }
@@ -139,7 +146,6 @@ void    handle_precision(t_format **params, t_output **output, int len)
 
     p = *params;
     tmp = ft_padstr('0', p->precision - len);
-
     if (ft_is_dioux(p->conv) && p->precision > len) {
         ft_add(tmp, output, 1);
     }
@@ -157,13 +163,14 @@ void    handle_res(t_format **params, t_output **output, char *res, int len)
     else if (res && *res == '0' && ft_is_dioux(p->conv) && p->period == 1)
     {
         *res = '\0';
-        if (p->hash && p->conv == 'o')
+        if (p->hash && (p->conv == 'o' || p->conv == 'O'))
             *res = '0';
         if (p->min_width > 0)
             *res = ' ';
         if (ft_is_dioux(p->conv) && p->precision > 1)
             *res = '0';
     }
+
     ft_add(res, output, 1);
     if (ft_strlen(res) == 0 && p->conv == 'c')
         ft_add(res, output, 2);
