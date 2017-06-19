@@ -45,6 +45,12 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
          }
         return (str);
     }
+    else if (arg == 'O')
+    {
+        params->lmod = 'l';
+        str = ft_itoa_base(ft_oux_len(ap, params), 8);
+        return (str);
+    }
     return(0);
 }
 

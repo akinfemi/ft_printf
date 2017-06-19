@@ -17,7 +17,7 @@ int		ft_is_valid(char c)
 {
 	char *conv;
 
-	conv = "sdDiouUxXcp%";
+	conv = "spdDioOuUxXc%";
 	while(*conv)
 	{
 		if (c == *conv)
@@ -79,7 +79,7 @@ int	ft_is_lmod(const char ch, t_format **p)
 int		ft_is_dioux(char c)
 {
 	char	*conv;
-	conv = "Ddioux";
+	conv = "DdioOux";
 
 	while(*conv)
 	{
@@ -93,7 +93,7 @@ int		ft_is_dioux(char c)
 int		ft_is_diox(char c)
 {
     char	*conv;
-    conv = "Ddiox";
+    conv = "DdioOx";
 
     while(*conv)
     {
