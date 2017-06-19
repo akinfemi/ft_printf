@@ -17,7 +17,7 @@ int		ft_is_valid(char c)
 {
 	char *conv;
 
-	conv = "sdDiouUxXcp%";
+	conv = "sdiouUxXcp%";
 	while(*conv)
 	{
 		if (c == *conv)

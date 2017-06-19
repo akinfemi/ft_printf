@@ -61,7 +61,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
         params->conv = '%';
         *fmt = *fmt + 1;
     }
-	 while (*fmt && **fmt && **fmt != '%')
+	 while (*fmt && **fmt && **fmt != '%' && params->conv != '%')
 	 {
 		tmp = *fmt;
 		set_flags(&params, fmt);
@@ -76,5 +76,6 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
         return ;
     if (ft_is_valid(params->conv) == 0)
         return ;
+//    ft_putstr(*fmt);
 	ft_build(ap, params, output);
 }

@@ -91,9 +91,15 @@ void    handle_padding(t_format **params, t_output **out, char *res, int len)
     len = set_len(params, res, len);
     ch = set_ch(params);
     add_prefix(params, out, res, ch);
-    if (p->min_width > p->precision && p->flag_minus == 0)
+    if (p->min_width > p->precision && p->flag_minus == 0 && p->conv != '%')
     {
         n = p->min_width - sign - len - p->space - (p->hash && p->conv == 'o');
+        str = ft_padstr(ch, n);
+        ft_add(str, out, 1);
+    }
+    else if(p->min_width > 0 && p->flag_minus == 0 && p->conv == '%')
+    {
+        n = p->min_width - ft_strlen(res);
         str = ft_padstr(ch, n);
         ft_add(str, out, 1);
     }
