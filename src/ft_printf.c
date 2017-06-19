@@ -12,6 +12,21 @@
 
 #include <ft_printf.h>
 //#include <stdio.h>
+//#include <stdlib.h>
+void        ft_repnull(t_output **output)
+{
+    t_output    *out;
+    char        *str;
+
+    out = *output;
+    str = out->res;
+    while (*str)
+    {
+        if (*str == 127)
+            *str = 0;
+        str++;
+    }
+}
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
@@ -25,16 +40,16 @@ int			ft_print(const char *fmt, va_list ap)
 	{
 		clean_output(&output);
 		temp = ft_strchr(fmt, '%');
-		if (!temp || (ft_strlen(fmt) - ft_strlen(temp) > 0))
-			ft_add(ft_strndup(fmt, ft_strlen(fmt) - ft_strlen(temp)), &output, 1);
+		if (!temp || temp - fmt > 0)
+			ft_add(ft_strndup(fmt, temp - fmt), &output, 0);
 		fmt = temp;
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
-		ft_putstr(output->res);
         out_len += ft_strlen(output->res);
+        ft_repnull(&output);
+		write(1, output->res, ft_strlen(output->res));
 	}
-//    printf("Final Out-len: %d\n", output->len);
-	return (output->len);
+	return (out_len);
 }
 
 int			ft_printf(const char *fmt, ...)

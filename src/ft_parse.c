@@ -55,7 +55,7 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 	params  = (t_format *)malloc(sizeof(t_format));
 	init_params(&params);
 
-    *fmt = *fmt + 1;//
+    *fmt = *fmt + 1;
 	if (**fmt == '%')
     {
         params->conv = '%';
@@ -69,13 +69,11 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 		set_precision(&params, fmt);
 		set_args(&params, fmt);
 		tmp++;
-//         printf("PC: %s\n", tmp);
 		if (*tmp == '\0' || --tmp - *fmt == 0 || params->conv != '\0')
 			break;
 	 }
     if (!*fmt)
         return ;
-//    printf("PC: %c\n", params->conv);
     if (ft_is_valid(params->conv) == 0)
         return ;
 	ft_build(ap, params, output);

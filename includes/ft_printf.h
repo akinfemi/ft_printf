@@ -70,6 +70,7 @@ void        handle_precision(t_format **params, t_output **output, int len);
 void        handle_res(t_format **params, t_output **output, char *res, int len);
 void        handle_alignment(t_format **params, t_output **output);
 int         set_len(t_format **params, char *res, int len);
+char        *ft_handle_p(va_list ap, t_format *params);
 /*
  * Temporary function
  */

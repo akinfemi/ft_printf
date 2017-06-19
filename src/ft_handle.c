@@ -1,7 +1,7 @@
 //
 // Created by Akinfemi Akin-Aluko on 5/31/17.
 //
-
+#include <stdio.h>
 #include <ft_printf.h>
 void    add_postfix (t_format **params, t_output **output, char *res, char ch);
 void    handle_hash(t_format **params, t_output **output)
@@ -169,4 +169,14 @@ void    handle_alignment(t_format **params, t_output **output)
     out = *output;
     if (p->flag_minus && p->min_width > out->len)
         ft_add(ft_padstr(' ', p->min_width - out->len), output, 1);
+}
+
+char    *ft_handle_p(va_list ap, t_format *params)
+{
+    char    *str;
+
+    (void)params;
+    str = ft_itoa_base(va_arg(ap, intmax_t), 16);
+    str = ft_strjoin("0x", str);
+    return (str);
 }

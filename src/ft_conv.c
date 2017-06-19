@@ -32,6 +32,8 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
         return (ft_itoa_base(ft_oux_len(ap, params), 16));
     else if (arg == 'X')
         return (ft_itoa_upper_base(ft_oux_len(ap, params), 16));
+    else if (arg == 'p')
+        return (ft_handle_p(ap, params));
     return(0);
 }
 
