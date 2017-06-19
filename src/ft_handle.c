@@ -74,8 +74,7 @@ char    set_ch(t_format **params)
     t_format    *p;
 
     p = *params;
-    ch = (p->zero && (ft_is_dioux(p->conv) || p->conv =='%')
-          && p->precision == 0) ? '0' : ' ';
+    ch = (p->zero && p->period == 0) ? '0' : ' ';
     return (ch);
 }
 void    handle_padding(t_format **params, t_output **out, char *res, int len)
@@ -136,10 +135,14 @@ void    handle_minus(t_format **params, t_output **output)
 void    handle_precision(t_format **params, t_output **output, int len)
 {
     t_format    *p;
+    char        *tmp;
 
     p = *params;
-    if (p->precision && ft_is_dioux(p->conv) && p->precision > len)
-        ft_add(ft_padstr('0', p->precision - len), output, 1);
+    tmp = ft_padstr('0', p->precision - len);
+
+    if (ft_is_dioux(p->conv) && p->precision > len) {
+        ft_add(tmp, output, 1);
+    }
 }
 
 void    handle_res(t_format **params, t_output **output, char *res, int len)

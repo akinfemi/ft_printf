@@ -6,6 +6,7 @@
 char        *handle_conv(va_list ap, char arg, t_format *params)
 {
     char    *str;
+
     if (arg == 'd' || arg == 'i')
     {
         str = ft_imaxtoa(ft_di_len(ap, params));
@@ -74,16 +75,16 @@ intmax_t    ft_di_len(va_list ap, t_format *params)
 
 uintmax_t   ft_oux_len(va_list ap, t_format *params)
 {
-    if (params->lmod == 'L')  //long long
-        return (va_arg(ap, unsigned long long));
-    else if (params->lmod == 'h')
-        return ((unsigned short) va_arg(ap, unsigned int));
-    else if (params->lmod == 'l')
-        return (va_arg(ap, unsigned long));
+    if (params->lmod == 'j')
+        return (va_arg(ap, uintmax_t));
     else if (params->lmod == 'z')
         return (va_arg(ap, size_t));
-    else if (params->lmod == 'j')
-        return (va_arg(ap, uintmax_t));
+    else if (params->lmod == 'L')  //long long
+        return (va_arg(ap, unsigned long long));
+    else if (params->lmod == 'l')
+        return (va_arg(ap, unsigned long));
+    else if (params->lmod == 'h')
+        return ((unsigned short) va_arg(ap, unsigned int));
     else if (params->lmod == 'H')
         return ((unsigned char)va_arg(ap, int));
     else

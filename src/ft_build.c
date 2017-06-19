@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-//#include <stdio.h>
+#include <stdio.h>
 void	ft_build(va_list ap, t_format *p, t_output **output) {
     char *res;
     t_output *out;

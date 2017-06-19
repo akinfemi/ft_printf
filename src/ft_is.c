@@ -64,11 +64,11 @@ int	ft_is_lmod(const char ch, t_format **p)
 		{
 			if (params->lmod == '\0')
 				params->lmod = ch;
-			else if (ch == 'l' && params->lmod == 'h')
+			else if (ch == 'l' && (params->lmod == 'h' || params->lmod == 'H'))
 				params->lmod = ch;
-			else if (ch == 'z' && (params->lmod == 'l' || params->lmod == 'h'))
+			else if (ch == 'z' && (ft_tolower(params->lmod) == 'l' || ft_tolower(params->lmod) == 'h'))
 				params->lmod = ch;
-			else if (ch == 'j' && (params->lmod == 'z' || params->lmod == 'l' || params->lmod == 'h'))
+			else if (ch == 'j' && (params->lmod == 'z' || ft_tolower(params->lmod) == 'l' || ft_tolower(params->lmod) == 'h'))
 				params->lmod = ch;
 			return (1);
 		}
@@ -79,7 +79,7 @@ int	ft_is_lmod(const char ch, t_format **p)
 int		ft_is_dioux(char c)
 {
 	char	*conv;
-	conv = "DdioOux";
+	conv = "DdioOuxX";
 
 	while(*conv)
 	{
@@ -93,7 +93,7 @@ int		ft_is_dioux(char c)
 int		ft_is_diox(char c)
 {
     char	*conv;
-    conv = "DdioOx";
+    conv = "DdioOxX";
 
     while(*conv)
     {

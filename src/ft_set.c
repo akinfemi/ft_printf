@@ -81,12 +81,9 @@ void		set_precision(t_format **p, const char **fmt)
 	{
 		params->period = 1;
 		str++;
-		if (*str >= '0' && *str <= '9')
-		{
-			params->precision = ft_atoi(str);
-			while (*str >= '0' && *str <= '9')
-				str++;
-		}
+		params->precision = ft_atoi(str);
+		while (*str >= '0' && *str <= '9')
+			str++;
 	}
 	*fmt = str;
 }
