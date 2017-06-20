@@ -40,10 +40,8 @@ void		handle_plus(t_format **params, t_output **output)
 void		handle_space(t_format **params, t_output **output)
 {
 	t_format	*p;
-//	t_output	*out;
 
 	p = *params;
-//	out = *output;
 	if (p->space && ft_is_diox(p->conv) && p->plus == 0 && p->minus == 0)
 		ft_add(ft_padstr(' ', 1), output, 3);
 }
@@ -54,7 +52,7 @@ void		handle_minus(t_format **params, t_output **output)
 
 	p = *params;
 	if (p->minus)
-		ft_add(ft_padstr('-', 1), output, 3);
+        ft_add(ft_padstr('-', 1), output, 3);
 }
 
 uintmax_t	ft_upper_u_len(va_list ap)

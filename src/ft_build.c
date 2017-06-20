@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-
+#include <stdio.h>
 void		ft_build(va_list ap, t_format *p, t_output **output)
 {
 	char		*res;
@@ -46,9 +46,9 @@ void		ft_add(char *str, t_output **output, int signal)
 		out->len += 1;
 	}
 	temp = out->res;
-	if (ft_strlen(temp))
-		free(temp);
 	out->res = ft_strjoin(out->res, str);
-	if (signal == 3 || signal == 4)
+    if (ft_strlen(temp))
+        free(temp);
+    if (signal == 3 || signal == 4)
 		free(str);
 }
