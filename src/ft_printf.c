@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-//#include <stdio.h>
-//#include <stdlib.h>
+
 void        ft_repnull(t_output **output)
 {
     t_output    *out;
@@ -27,6 +26,7 @@ void        ft_repnull(t_output **output)
         str++;
     }
 }
+
 int			ft_print(const char *fmt, va_list ap)
 {
 	const char	*temp;
@@ -42,7 +42,7 @@ int			ft_print(const char *fmt, va_list ap)
 		clean_output(&output);
 		temp = ft_strchr(fmt, '%');
 		if (!temp || temp - fmt > 0)
-			ft_add(ft_strndup(fmt, temp - fmt), &output, 0);
+			ft_add(ft_strndup(fmt, temp - fmt), &output, 4);
 		fmt = temp;
 		if (fmt)
 			ft_parse(ap, &fmt, &output);
@@ -51,6 +51,7 @@ int			ft_print(const char *fmt, va_list ap)
         ft_repnull(&output);
 		write(1, output->res, n);
 	}
+    ft_clean(&output);
 	return (out_len);
 }
 

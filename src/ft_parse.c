@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+
 void		init_output(t_output **output)
 {
 	t_output	*out;
@@ -20,6 +20,7 @@ void		init_output(t_output **output)
 	out->res = ft_strnew(0);
 	out->len = 0;
 }
+
 void		clean_output(t_output **output)
 {
 	t_output	*out;
@@ -29,6 +30,17 @@ void		clean_output(t_output **output)
         free(out->res);
 	out->res = ft_strnew(0);
 }
+
+void		ft_clean(t_output **output)
+{
+    t_output	*out;
+
+    out = *output;
+    free(out->res);
+    free(out);
+    output = NULL;
+}
+
 void		init_params(t_format **p)
 {
 	t_format	*params;
@@ -54,13 +66,9 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 
 	params  = (t_format *)malloc(sizeof(t_format));
 	init_params(&params);
-
     *fmt = *fmt + 1;
-	if (**fmt == '%')
-    {
-        params->conv = '%';
-        *fmt = *fmt + 1;
-    }
+    params->conv = (**fmt == '%') ? '%' : '\0';
+    *fmt = (params->conv == '%') ? *fmt + 1 : *fmt;
 	 while (*fmt && **fmt && **fmt != '%' && params->conv != '%')
 	 {
 		tmp = *fmt;
@@ -76,6 +84,6 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
         return ;
     if (ft_is_valid(params->conv) == 0)
         return ;
-//    ft_putnbr(params->zero);
 	ft_build(ap, params, output);
+    free(params);
 }

@@ -10,14 +10,41 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
     if (arg == 'd' || arg == 'i')
     {
         str = ft_imaxtoa(ft_di_len(ap, params));
-        if (*str == '-')
-        {
-            params->minus = 1;
-            str++;
-        }
+        params->minus = (*str == '-') ? 1 : 0;
+        str += (params->minus) ? 1 : 0;
         return (str);
     }
-    else if (arg == 's')
+    else if (ft_is_set(arg))
+        return (handle_conv2(ap, arg, params));
+    else if (arg == 'D')
+    {
+        params->lmod = 'l';
+        str = ft_imaxtoa(ft_di_len(ap, params));
+         if (*str == '-')
+         {
+             params->minus = 1;
+             str++;
+         }
+        return (str);
+    }
+    return(0);
+}
+
+int         ft_is_set(char arg)
+{
+    char    *set = "sc%uUxXpoO";
+    while (*set)
+    {
+        if (*set == arg)
+            return (1);
+        set++;
+    }
+    return (0);
+}
+
+char        *handle_conv2(va_list ap, char arg, t_format *params)
+{
+    if (arg == 's')
         return (va_arg(ap, char *));
     else if (arg == 'c')
         return (ft_padstr(va_arg(ap, int), 1));
@@ -35,22 +62,10 @@ char        *handle_conv(va_list ap, char arg, t_format *params)
         return (ft_itoa_upper_base(ft_oux_len(ap, params), 16));
     else if (arg == 'p')
         return (ft_handle_p(ap, params));
-    else if (arg == 'D')
-    {
-        params->lmod = 'l';
-        str = ft_imaxtoa(ft_di_len(ap, params));
-         if (*str == '-')
-         {
-             params->minus = 1;
-             str++;
-         }
-        return (str);
-    }
     else if (arg == 'O')
     {
         params->lmod = 'l';
-        str = ft_itoa_base(ft_oux_len(ap, params), 8);
-        return (str);
+        return (ft_itoa_base(ft_oux_len(ap, params), 8));
     }
     return(0);
 }
@@ -91,7 +106,3 @@ uintmax_t   ft_oux_len(va_list ap, t_format *params)
         return (va_arg(ap, unsigned int));
 }
 
-uintmax_t   ft_U_len(va_list ap)
-{
-    return (va_arg(ap, unsigned long));
-}
