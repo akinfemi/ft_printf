@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 11:01:37 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 16:19:42 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 16:34:24 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,25 @@ void		set_min_width(t_format **p, const char **fmt, va_list ap)
 	*fmt = str;
 }
 
-void		set_precision(t_format **p, const char **fmt, va_list ap)
+void		set_precision(t_format **params, const char **fmt, va_list ap)
 {
-	t_format	*params;
+	t_format	*p;
 	const char	*str;
 
 	str = *fmt;
-	params = *p;
+	p = *params;
 	if (*str == '.')
 	{
-		params->period = 1;
+		p->period = 1;
 		str++;
 		if (*str == '*')
 		{
-			params->precision = va_arg(ap, int);
+			p->precision = va_arg(ap, int);
+			p->precision = (p->precision < 0) ? p->min_width : p->precision;
 			str++;
 		}
 		else
-			params->precision = ft_atoi(str);
+			p->precision = ft_atoi(str);
 		while (*str >= '0' && *str <= '9')
 			str++;
 	}
