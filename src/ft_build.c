@@ -15,16 +15,16 @@
 void		ft_build(va_list ap, t_format *p, t_output **output)
 {
 	char		*res;
-	t_output	*out;
+//	t_output	*out;
 	int			len;
-	char		ch;
+//	char		ch;
 
-	out = *output;
+//	out = *output;
 	res = handle_conv(ap, p->conv, p);
 	if (p->conv == 's' && p->precision == 0 && p->period == 1)
 		res = "";
 	len = ft_strlen(res);
-	ch = ' ';
+//	ch = ' ';
 	handle_space(&p, output);
 	handle_padding(&p, output, res, len);
 	handle_precision(&p, output, len);
