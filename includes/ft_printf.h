@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 13:04:43 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:41:40 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 12:40:44 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct	s_format
 	int			period;
 	int			precision;
 	char		conv;
-	int			perc;
 	char		lmod;
 	int			flag_minus;
 }				t_format;

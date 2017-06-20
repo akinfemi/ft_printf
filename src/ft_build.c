@@ -6,25 +6,21 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 09:22:25 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 22:49:37 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 12:24:33 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+
 void		ft_build(va_list ap, t_format *p, t_output **output)
 {
 	char		*res;
-//	t_output	*out;
 	int			len;
-//	char		ch;
 
-//	out = *output;
 	res = handle_conv(ap, p->conv, p);
 	if (p->conv == 's' && p->precision == 0 && p->period == 1)
 		res = "";
 	len = ft_strlen(res);
-//	ch = ' ';
 	handle_space(&p, output);
 	handle_padding(&p, output, res, len);
 	handle_precision(&p, output, len);

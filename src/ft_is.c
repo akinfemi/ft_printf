@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:24:03 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:32:53 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 13:04:32 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_is_valid(char c)
 {
 	char	*conv;
 
-	conv = "spdDioOuUxXc%";
+	conv = "sSpdDioOuUxXcC%";
 	while (*conv)
 	{
 		if (c == *conv)

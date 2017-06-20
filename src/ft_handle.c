@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 22:50:41 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:05:34 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 13:13:35 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ void	handle_precision(t_format **params, t_output **output, int len)
 void	handle_res(t_format **params, t_output **output, char *res, int len)
 {
 	t_format	*p;
+	int			prec;
 
 	p = *params;
-	if (!res && p->conv == 's')
+	prec = p->precision;
+	if (!res && ft_tolower(p->conv) == 's')
 		res = "(null)";
-	else if (p->conv == 's' && p->precision != 0 && p->precision < len)
+	else if (ft_tolower(p->conv) == 's' && p->precision != 0 && prec < len)
 		res = ft_strndup(res, p->precision);
 	else if (res && *res == '0' && ft_is_dioux(p->conv) && p->period == 1)
 	{
@@ -83,7 +85,7 @@ void	handle_res(t_format **params, t_output **output, char *res, int len)
 			*res = '0';
 	}
 	ft_add(res, output, 1);
-	if (ft_strlen(res) == 0 && p->conv == 'c')
+	if (ft_strlen(res) == 0 && ft_tolower(p->conv) == 'c')
 		ft_add(res, output, 2);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:13:41 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:28:33 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 13:16:14 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			ft_is_set(char arg)
 {
 	char	*set;
 
-	set = "sc%uUxXpoO";
+	set = "sScC%uUxXpoO";
 	while (*set)
 	{
 		if (*set == arg)
@@ -55,9 +55,9 @@ int			ft_is_set(char arg)
 
 char		*handle_conv2(va_list ap, char arg, t_format *params)
 {
-	if (arg == 's')
+	if (arg == 's' || arg == 'S')
 		return (va_arg(ap, char *));
-	else if (arg == 'c')
+	else if (arg == 'c' || arg == 'C')
 		return (ft_padstr(va_arg(ap, int), 1));
 	else if (arg == '%')
 		return (ft_padstr(arg, 1));
