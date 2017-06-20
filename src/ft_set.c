@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 11:01:37 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:23:43 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 16:19:42 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,21 @@ int			ft_is_flag(char arg)
 	return (0);
 }
 
-void		set_min_width(t_format **p, const char **fmt)
+void		set_min_width(t_format **p, const char **fmt, va_list ap)
 {
 	t_format	*params;
 	const char	*str;
 
 	str = *fmt;
 	params = *p;
-	if (*str >= '1' && *str <= '9')
+	if (*str == '*' && params->period == 0)
+	{
+		params->min_width = va_arg(ap, int);
+		str++;
+		params->flag_minus = (params->min_width < 0) ? 1 : params->flag_minus;
+		params->min_width *= (params->min_width < 0) ? -1 : 1;
+	}
+	else if (*str >= '1' && *str <= '9')
 	{
 		params->min_width = ft_atoi(str);
 		while (*str >= '0' && *str <= '9')
@@ -66,7 +73,7 @@ void		set_min_width(t_format **p, const char **fmt)
 	*fmt = str;
 }
 
-void		set_precision(t_format **p, const char **fmt)
+void		set_precision(t_format **p, const char **fmt, va_list ap)
 {
 	t_format	*params;
 	const char	*str;
@@ -77,7 +84,13 @@ void		set_precision(t_format **p, const char **fmt)
 	{
 		params->period = 1;
 		str++;
-		params->precision = ft_atoi(str);
+		if (*str == '*')
+		{
+			params->precision = va_arg(ap, int);
+			str++;
+		}
+		else
+			params->precision = ft_atoi(str);
 		while (*str >= '0' && *str <= '9')
 			str++;
 	}

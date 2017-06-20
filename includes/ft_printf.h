@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 13:04:43 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 12:40:44 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 16:05:01 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void			ft_add(char *str, t_output **output, int b);
 void			ft_parse(va_list ap, const char **fmt, t_output **output);
 void			ft_build(va_list ap, t_format *p, t_output **output);
 void			set_flags(t_format **p, const char **fmt);
-void			set_min_width(t_format **p, const char **fmt);
-void			set_precision(t_format **p, const char **fmt);
+void			set_min_width(t_format **p, const char **fmt, va_list ap);
+void			set_precision(t_format **p, const char **fmt, va_list ap);
 void			set_args(t_format **p, const char **fmt);
 int				ft_is_conv(char *str);
 int				ft_is_valid(char c);

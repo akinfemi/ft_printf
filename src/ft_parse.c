@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 10:15:35 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:22:08 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 16:04:22 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void		ft_parse(va_list ap, const char **fmt, t_output **output)
 	{
 		tmp = *fmt;
 		set_flags(&params, fmt);
-		set_min_width(&params, fmt);
-		set_precision(&params, fmt);
+		set_min_width(&params, fmt, ap);
+		set_precision(&params, fmt, ap);
 		set_args(&params, fmt);
 		tmp++;
 		if (*tmp == '\0' || --tmp - *fmt == 0 || params->conv != '\0')
