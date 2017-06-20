@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/19 23:24:03 by aakin-al          #+#    #+#             */
+/*   Updated: 2017/06/19 23:32:53 by aakin-al         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
-
-int	ft_is_conv(char *str)
+int			ft_is_conv(char *str)
 {
 	char	*conv;
-	conv = "sSpdDioOuUxXcC%";
 
-	while(*conv)
+	conv = "sSpdDioOuUxXcC%";
+	while (*conv)
 	{
 		if (*str == *conv)
 			return (1);
@@ -15,12 +26,12 @@ int	ft_is_conv(char *str)
 	return (0);
 }
 
-int		ft_is_valid(char c)
+int			ft_is_valid(char c)
 {
-	char *conv;
+	char	*conv;
 
 	conv = "spdDioOuUxXc%";
-	while(*conv)
+	while (*conv)
 	{
 		if (c == *conv)
 			return (1);
@@ -29,16 +40,16 @@ int		ft_is_valid(char c)
 	return (0);
 }
 
-int	ft_is_slmod(const char *str)
+int			ft_is_slmod(const char *str)
 {
 	char	*slmod[3];
-	int 	i;
+	int		i;
 
 	slmod[0] = "hh";
 	slmod[1] = "ll";
 	slmod[2] = "\0";
 	i = 0;
-	while(i < 2)
+	while (i < 2)
 	{
 		if (ft_strncmp(slmod[i], str, 2) == 0)
 			return (1);
@@ -47,20 +58,16 @@ int	ft_is_slmod(const char *str)
 	return (0);
 }
 
-int	ft_is_lmod(const char ch, t_format **p)
+int			ft_is_lmod(const char ch, t_format **p)
 {
-	char		lmod[5];
+	char		*lmod;
 	t_format	*params;
-	int 		i;
+	int			i;
 
 	params = *p;
-	lmod[0] = 'h';
-	lmod[1] = 'l';
-	lmod[2] = 'j';
-	lmod[3] = 'z';
-	lmod[4] = '\0';
+	lmod = "hljz";
 	i = -1;
-	while(++i < 4)
+	while (++i < 4)
 	{
 		if (ch == lmod[i])
 		{
@@ -68,9 +75,10 @@ int	ft_is_lmod(const char ch, t_format **p)
 				params->lmod = ch;
 			else if (ch == 'l' && (params->lmod == 'h' || params->lmod == 'H'))
 				params->lmod = ch;
-			else if (ch == 'z' && (ft_tolower(params->lmod) == 'l' || ft_tolower(params->lmod) == 'h'))
+			else if (ch == 'z' && (ft_tolower(params->lmod) == 'l'
+						|| ft_tolower(params->lmod) == 'h'))
 				params->lmod = ch;
-			else if (ch == 'j' && (params->lmod == 'z' || ft_tolower(params->lmod) == 'l' || ft_tolower(params->lmod) == 'h'))
+			else if (ch == 'j')
 				params->lmod = ch;
 			return (1);
 		}
