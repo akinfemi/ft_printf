@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:06:45 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:07:52 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 15:42:06 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int		set_len(t_format **params, char *res, int n)
 	return (len);
 }
 
+int		ft_is_scperc(char ch)
+{
+	return (ch == 's' || ch == 'c' || ch == '%');
+}
+
 char	set_ch(t_format **params)
 {
 	char		ch;
@@ -39,6 +44,8 @@ char	set_ch(t_format **params)
 
 	p = *params;
 	ch = (p->zero && p->period == 0) ? '0' : ' ';
+	if (p->zero && p->period && (ft_is_scperc(p->conv)))
+		ch = '0';
 	return (ch);
 }
 
