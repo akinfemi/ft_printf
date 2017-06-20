@@ -73,6 +73,7 @@ SOURCE_FILES := libft/btree_add_node.c\
                 libft/ft_imaxtoa.c\
                 ft_build.c\
                 ft_is.c\
+                ft_is2.c\
                 ft_parse.c\
                 ft_set.c\
                 ft_conv.c\

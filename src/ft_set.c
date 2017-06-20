@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-//#include <stdio.h> /* Remove later !!!!!!!!!!!!!!!!*/
 
 void		set_flags(t_format **p, const char **fmt)
 {
@@ -20,31 +19,13 @@ void		set_flags(t_format **p, const char **fmt)
 
 	str = *fmt;
 	params = *p;
-	if (*str == '#')
-	{
-		params->hash = 1;
-		str++;
-	}
-	if (*str == '0')
-	{
-		params->zero = 1;
-		str++;
-	}
-	if (*str == '-')
-	{
-		params->flag_minus = 1;
-		str++;
-	}
-	if (*str == '+')
-	{
-		params->plus = 1;
-		str++;
-	}
-	if (*str == ' ')
-	{
-		params->space = 1;
-		str++;
-	}
+    params->hash = (*str == '#') ? 1 : params->hash;
+    params->zero = (*str == '0') ? 1 : params->zero;
+	params->flag_minus = (*str == '-') ? 1 : params->flag_minus;
+    params->plus = (*str == '+') ? 1 : params->plus;
+    params->space = (*str == ' ') ? 1 : params->space;
+    if (ft_is_flag(*str))
+        str++;
 	if (ft_is_slmod(str))
 	{
 		params->lmod = ft_toupper(*str);
@@ -53,6 +34,20 @@ void		set_flags(t_format **p, const char **fmt)
     if (ft_is_lmod(*str, &params))
 		str++;
 	*fmt = str;
+}
+
+int         ft_is_flag(char arg)
+{
+    char    *str;
+
+    str = "#0+- ";
+    while (*str)
+    {
+        if (*str == arg)
+            return (1);
+        str++;
+    }
+    return (0);
 }
 
 void		set_min_width(t_format **p, const char **fmt)

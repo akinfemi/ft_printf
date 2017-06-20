@@ -78,5 +78,5 @@ char        *handle_conv2(va_list ap, char arg, t_format *params);
 void        add_prefix(t_format **params, t_output **output, char *res, char ch);
 char        set_ch(t_format **params);
 int         ft_isox(char c);
-
+int         ft_is_flag(char arg);
 #endif
