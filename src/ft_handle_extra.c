@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:06:45 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 15:42:06 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 18:42:41 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,23 @@ char	set_ch(t_format **params)
 	return (ch);
 }
 
-char	*ft_handle_p(va_list ap, t_format *params)
+char	*ft_handle_p(va_list ap, t_format *p)
 {
 	char	*str;
 	char	*temp;
+	int		n;
 
-	(void)params;
+	temp = "\0";
 	str = ft_itoa_base(va_arg(ap, intmax_t), 16);
-	temp = ft_strdup("0x");
+	if (ft_strcmp(str, "0") == 0 && p->precision == 0 && p->period == 1)
+		str = "";
+	n = ft_strlen(str);
+	if (p->precision > n)
+		temp = ft_padstr('0', p->precision - n);
 	str = ft_strjoin(temp, str);
-	free(temp);
+	str = ft_strjoin("0x", str);
+	if (ft_strlen(temp) > 0)
+		free(temp);
 	return (str);
 }
 

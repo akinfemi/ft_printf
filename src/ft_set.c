@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 11:01:37 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 16:34:24 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/20 18:45:39 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,27 @@ void		set_min_width(t_format **p, const char **fmt, va_list ap)
 void		set_precision(t_format **params, const char **fmt, va_list ap)
 {
 	t_format	*p;
-	const char	*str;
+	const char	*s;
 
-	str = *fmt;
+	s = *fmt;
 	p = *params;
-	if (*str == '.')
+	if (*s == '.')
 	{
 		p->period = 1;
-		str++;
-		if (*str == '*')
+		s++;
+		if (*s == '*')
 		{
+			s++;
 			p->precision = va_arg(ap, int);
-			p->precision = (p->precision < 0) ? p->min_width : p->precision;
-			str++;
+			p->precision *= (p->precision < 0 && *s == 's') ? -1 : 1;
+			p->precision = (p->precision < 0 && *s != 's') ? p->min_width : p->precision;
 		}
 		else
-			p->precision = ft_atoi(str);
-		while (*str >= '0' && *str <= '9')
-			str++;
+			p->precision = ft_atoi(s);
+		while (*s >= '0' && *s <= '9')
+			s++;
 	}
-	*fmt = str;
+	*fmt = s;
 }
 
 void		set_args(t_format **p, const char **fmt)
