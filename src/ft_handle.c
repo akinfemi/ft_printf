@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 22:50:41 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 14:53:22 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/23 03:19:18 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	handle_precision(t_format **params, t_output **output, int len)
 	y = (p->hash && ft_tolower(p->conv) == 'o') ? 1 : 0;
 	tmp = ft_padstr('0', p->precision - len - y);
 	if (ft_is_dioux(p->conv) && p->precision > len)
-		ft_add(tmp, output, 3);
+		ft_add(tmp, output, 1);
+	free(tmp);
 }
 
 void	handle_res(t_format **params, t_output **output, char *res, int len)
