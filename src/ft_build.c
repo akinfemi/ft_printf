@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 09:22:25 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 12:24:33 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/23 02:00:09 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void		ft_build(va_list ap, t_format *p, t_output **output)
 	handle_precision(&p, output, len);
 	handle_res(&p, output, res, len);
 	handle_alignment(&p, output);
+	if (ft_is_dioux(p->conv))
+		free(res);
 }
 
 void		ft_add(char *str, t_output **output, int signal)
