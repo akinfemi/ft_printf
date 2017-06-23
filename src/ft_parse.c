@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 10:15:35 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/23 03:16:36 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/23 03:37:45 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		clean_output(t_output **output)
 	t_output	*out;
 
 	out = *output;
-	if (ft_strlen(out->res))
+	if (out->res)
 		ft_strdel(&out->res);
 }
 
