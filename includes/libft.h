@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 12:46:58 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/12 13:39:43 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/23 01:56:53 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,5 @@ void				btree_apply_preorder(t_btree *root, void (*applyf)(int));
 void				btree_add_node(t_btree **root, t_btree *node);
 char				*ft_itoa_base(uintmax_t value, int base);
 char				*ft_itoa_upper_base(uintmax_t value, int base);
-char				*ft_imaxtoa(intmax_t nb);
+char				*ft_imaxtoa(uintmax_t nb);
 #endif
