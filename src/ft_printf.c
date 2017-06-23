@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 13:02:34 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/19 23:11:47 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/23 03:16:02 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void		ft_repnull(t_output **output)
 	char		*str;
 
 	out = *output;
+	if (!out)
+		return ;
 	str = out->res;
-	while (*str)
+	while (str && *str)
 	{
 		if (*str == 127)
 			*str = 0;
