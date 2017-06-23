@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:06:45 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 18:42:41 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/23 03:53:05 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,25 @@ char	*ft_handle_p(va_list ap, t_format *p)
 {
 	char	*str;
 	char	*temp;
+	char	*s;
 	int		n;
 
-	temp = "\0";
-	str = ft_itoa_base(va_arg(ap, intmax_t), 16);
-	if (ft_strcmp(str, "0") == 0 && p->precision == 0 && p->period == 1)
-		str = "";
-	n = ft_strlen(str);
+	temp = ft_strnew(0);
+	s = ft_itoa_base(va_arg(ap, intmax_t), 16);
+	if (ft_strcmp(s, "0") == 0 && p->precision == 0 && p->period == 1)
+	{
+		ft_strdel(&s);
+		s = ft_strnew(0);
+	}
+	n = ft_strlen(s);
 	if (p->precision > n)
 		temp = ft_padstr('0', p->precision - n);
-	str = ft_strjoin(temp, str);
+	str = ft_strjoin(temp, s);
+	ft_strdel(&s);
+	s = str;
 	str = ft_strjoin("0x", str);
-	if (ft_strlen(temp) > 0)
-		free(temp);
+	ft_strdel(&temp);
+	ft_strdel(&s);
 	return (str);
 }
 
