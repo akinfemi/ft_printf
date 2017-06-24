@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 11:01:37 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 19:25:30 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:21:09 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void		set_precision(t_format **params, const char **fmt, va_list ap)
 			s++;
 			p->precision = va_arg(ap, int);
 			p->precision *= (p->precision < 0 && *s == 's') ? -1 : 1;
-			p->precision = (p->precision < 0 && *s != 's') ? p->min_width : p->precision;
+			p->precision = (p->precision < 0 && *s != 's')
+				? p->min_width : p->precision;
 		}
 		else
 			p->precision = ft_atoi(s);

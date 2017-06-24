@@ -6,12 +6,12 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:17:59 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 17:06:17 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:23:35 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
+
 void		handle_hash(t_format **params, t_output **output)
 {
 	t_format	*p;
@@ -52,7 +52,7 @@ void		handle_minus(t_format **params, t_output **output)
 
 	p = *params;
 	if (p->minus)
-        ft_add(ft_padstr('-', 1), output, 3);
+		ft_add(ft_padstr('-', 1), output, 3);
 }
 
 uintmax_t	ft_upper_u_len(va_list ap)

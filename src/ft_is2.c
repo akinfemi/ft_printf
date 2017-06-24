@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:08:23 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/20 16:58:29 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:19:04 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_is_di(char c)
 	}
 	return (0);
 }
+
 int		ft_is_dix(char c)
 {
 	char	*conv;
@@ -65,4 +66,9 @@ int		ft_is_dix(char c)
 		conv++;
 	}
 	return (0);
+}
+
+int		ft_isox(char c)
+{
+	return (c == 'x' || c == 'X' || c == 'o' || c == 'O');
 }

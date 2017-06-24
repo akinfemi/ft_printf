@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 09:22:25 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/23 03:32:53 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:14:45 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		ft_add(char *str, t_output **output, int signal)
 	}
 	temp = out->res;
 	out->res = ft_strjoin(out->res, str);
-    if (ft_strlen(temp))
-        free(temp);
-    if (signal == 3 || signal == 4)
+	if (ft_strlen(temp))
+		free(temp);
+	if (signal == 3 || signal == 4)
 		free(str);
 }

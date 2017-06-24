@@ -6,7 +6,7 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:13:41 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/23 01:55:21 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:21:55 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*handle_conv(va_list ap, char arg, t_format *params)
 		if (arg == 'D')
 			params->lmod = 'l';
 		val = ft_di_len(ap, params);
-		params->minus = (val < 0) ? 1: 0;
+		params->minus = (val < 0) ? 1 : 0;
 		val *= (params->minus) ? -1 : 1;
 		str = ft_imaxtoa(val);
 		return (str);

@@ -6,30 +6,34 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 21:17:57 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/31 10:04:49 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:13:18 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+
 static int		get_len(uintmax_t nbr, int base)
 {
-	int i = 0;
+	int		i;
+
+	i = 0;
 	if (nbr == 0)
 		return (1);
 	while (nbr != 0)
 	{
-		nbr/=base;
+		nbr /= base;
 		i++;
 	}
 	return (i);
 }
 
-char	*ft_itoa_upper_base(uintmax_t val, int base)
+char			*ft_itoa_upper_base(uintmax_t val, int base)
 {
-	int8_t len;
-	char *str;
-	int sign = 1;
+	int8_t	len;
+	char	*str;
+	int		sign;
 
+	sign = 1;
 	len = get_len(val, base) + (sign < 0);
 	str = (char *)malloc(sizeof(char) * len + 1);
 	str[len] = '\0';
@@ -41,7 +45,7 @@ char	*ft_itoa_upper_base(uintmax_t val, int base)
 	while (val != 0)
 	{
 		str[--len] = (val % base) + (val % base > 9 ? 'A' - 10 : '0');
-		val/=base;
+		val /= base;
 	}
 	return (str);
 }

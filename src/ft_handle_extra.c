@@ -6,16 +6,11 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 23:06:45 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/06/23 03:53:05 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/06/24 09:18:06 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-
-int		ft_isox(char c)
-{
-	return (c == 'x' || c == 'X' || c == 'o' || c == 'O');
-}
 
 int		set_len(t_format **params, char *res, int n)
 {
